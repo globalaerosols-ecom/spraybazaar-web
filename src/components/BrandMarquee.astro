@@ -1,0 +1,70 @@
+---
+---
+
+<section class="brand-marquee-section py-6 bg-white overflow-hidden border-y border-black/5">
+    <div class="marquee-wrapper relative flex">
+        <!-- Masking Edges for Premium Look -->
+        <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+
+        <div class="marquee-content flex items-center gap-16 whitespace-nowrap animate-scroll">
+            {[
+                { name: "Bosny", font: "'Plus Jakarta Sans', sans-serif", weight: "800" },
+                { name: "Weldmax", font: "'Impact', sans-serif", weight: "400" },
+                { name: "Axe", font: "'Plus Jakarta Sans', sans-serif", weight: "900" },
+                { name: "Davidoff", font: "'Georgia', serif", weight: "400" },
+                { name: "Cosmos", font: "'Inter', sans-serif", weight: "300" },
+                { name: "Montana", font: "'Brush Script MT', cursive", weight: "400" },
+                { name: "Rust-Oleum", font: "'Courier New', monospace", weight: "700" },
+                { name: "Krylon", font: "'Arial Narrow', sans-serif", weight: "800" },
+                { name: "Spray Bazaar", font: "'Inter', sans-serif", weight: "900" }
+            ].map((brand) => (
+                <span class="brand-item" style={`font-family: ${brand.font}; font-weight: ${brand.weight};`}>
+                    {brand.name}
+                </span>
+            ))}
+            <!-- Duplicate for Seamless Loop -->
+            {[
+                { name: "Bosny", font: "'Plus Jakarta Sans', sans-serif", weight: "800" },
+                { name: "Weldmax", font: "'Impact', sans-serif", weight: "400" },
+                { name: "Axe", font: "'Plus Jakarta Sans', sans-serif", weight: "900" },
+                { name: "Davidoff", font: "'Georgia', serif", weight: "400" },
+                { name: "Cosmos", font: "'Inter', sans-serif", weight: "300" },
+                { name: "Montana", font: "'Brush Script MT', cursive", weight: "400" },
+                { name: "Rust-Oleum", font: "'Courier New', monospace", weight: "700" },
+                { name: "Krylon", font: "'Arial Narrow', sans-serif", weight: "800" },
+                { name: "Spray Bazaar", font: "'Inter', sans-serif", weight: "900" }
+            ].map((brand) => (
+                <span class="brand-item" style={`font-family: ${brand.font}; font-weight: ${brand.weight};`}>
+                    {brand.name}
+                </span>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .brand-item {
+        font-size: clamp(1rem, 3vw, 2rem);
+        color: #000;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        padding-right: 2rem;
+    }
+
+    .animate-scroll {
+        animation: scroll 25s linear infinite;
+        will-change: transform;
+        backface-visibility: hidden;
+    }
+
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* Pause animation on hover for interactivity */
+    .marquee-wrapper:hover .animate-scroll {
+        animation-play-state: paused;
+    }
+</style>

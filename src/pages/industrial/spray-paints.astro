@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import PaintHero from '../../components/PaintHero.astro';
+import PaintScroller from '../../components/PaintScroller.astro';
+import PaintLifestyle from '../../components/PaintLifestyle.astro';
+import BrandMarquee from '../../components/BrandMarquee.astro';
+import PaintGrid from '../../components/PaintGrid.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Spray Paints & Coatings | Spray Bazaar Professional">
+	<Header />
+	<main>
+		<PaintHero />
+		<PaintScroller />
+		<PaintLifestyle />
+		<BrandMarquee />
+		<PaintGrid />
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		overflow-x: hidden;
+		background: #fff;
+	}
+</style>

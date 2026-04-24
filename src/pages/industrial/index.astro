@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import IndustrialHero from '../../components/IndustrialHero.astro';
+import IndustrialScroller from '../../components/IndustrialScroller.astro';
+import IndustrialLifestyle from '../../components/IndustrialLifestyle.astro';
+import IndustrialProductGrid from '../../components/IndustrialProductGrid.astro';
+import IndustrialCatalog from '../../components/IndustrialCatalog.astro';
+import BrandMarquee from '../../components/BrandMarquee.astro';
+import IndustrialGrid from '../../components/IndustrialGrid.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Aura Industrial | Premium Maintenance & Protection">
+	<Header />
+	<main>
+		<IndustrialHero />
+		<IndustrialScroller />
+		<IndustrialLifestyle />
+		<BrandMarquee />
+		<IndustrialProductGrid />
+		<IndustrialCatalog />
+		<IndustrialGrid />
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		overflow-x: hidden;
+		background: #fff;
+	}
+</style>

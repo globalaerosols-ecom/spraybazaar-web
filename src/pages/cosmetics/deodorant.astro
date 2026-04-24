@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import DeodorantHero from '../../components/DeodorantHero.astro';
+import DeodorantScroller from '../../components/DeodorantScroller.astro';
+import YoungLifestyle from '../../components/YoungLifestyle.astro';
+import DeodorantGrid from '../../components/DeodorantGrid.astro';
+import DeodorantCatalog from '../../components/DeodorantCatalog.astro';
+import BrandMarquee from '../../components/BrandMarquee.astro';
+import DeodorantReviewSection from '../../components/DeodorantReviewSection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Deodorant Collection | Spray Bazaar Professional">
+	<Header />
+	<main>
+		<DeodorantHero />
+		<DeodorantScroller />
+		<YoungLifestyle />
+		<BrandMarquee />
+		<DeodorantGrid />
+		<DeodorantCatalog />
+		<DeodorantReviewSection />
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		overflow-x: hidden;
+		background: #fff;
+	}
+</style>

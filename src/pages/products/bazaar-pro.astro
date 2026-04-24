@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import ProductHero from '../../components/ProductHero.astro';
+import TechFeature from '../../components/TechFeature.astro';
+import ProductReviewSection from '../../components/ProductReviewSection.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Bazaar Pro Matte - Professional Grade | Spray Bazaar">
+	<Header />
+	<main>
+		<ProductHero />
+		<TechFeature />
+		<ProductReviewSection />
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		overflow-x: hidden;
+	}
+</style>

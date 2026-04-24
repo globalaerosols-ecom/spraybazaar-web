@@ -1,0 +1,69 @@
+---
+const gridProducts = [
+    { id: 7, name: "Aura 72H Pure", brand: "Aura", price: "19.00", img: "/images/cosmetics/deodorant.png", type: "Classic", category: "HYGIENE" },
+    { id: 8, name: "Zenith Gold Standard", brand: "Zenith", price: "32.00", img: "/images/cosmetics/shimmer-spray-luxury.png", type: "Bestseller", category: "LUXURY" },
+    { id: 9, name: "Onyx Ice Crush", brand: "Onyx", price: "21.00", img: "/images/cosmetics/industrial-spray-luxury.png", type: "Extra Fresh", category: "ACTIVE" },
+    { id: 10, name: "Vibe Electric Citrus", brand: "Vibe", price: "15.00", img: "/images/cosmetics/deodorant.png", type: "Zesty", category: "SPORT" },
+    { id: 11, name: "Silk White Satin", brand: "Silk", price: "23.00", img: "/images/cosmetics/deodorant.png", type: "Floral", category: "ELEGANCE" },
+    { id: 12, name: "Onyx Carbon Pro", brand: "Onyx", price: "29.00", img: "/images/cosmetics/industrial-spray-luxury.png", type: "Heavy Duty", category: "PRO" },
+    { id: 13, name: "Aura Arctic Lime", brand: "Aura", price: "18.50", img: "/images/cosmetics/deodorant.png", type: "Fruit", category: "FRESH" },
+    { id: 14, name: "Zenith Chrome Elite", brand: "Zenith", price: "26.00", img: "/images/cosmetics/deodorant-luxury.png", type: "Sleek", category: "ELITE" },
+    { id: 15, name: "Vibe Tropical Pulse", brand: "Vibe", price: "17.00", img: "/images/cosmetics/deodorant.png", type: "Exotic", category: "TRAVEL" }
+];
+---
+<section class="deodorant-grid-section w-full py-32 bg-[#fafafa]">
+    <div class="px-6 lg:px-24 mb-20 text-center">
+        <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Selected Variants</span>
+        <h2 class="text-5xl md:text-6xl font-black tracking-tighter leading-none">ELITE <span class="text-[#2b65ff]">COLLECTION</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-12 px-6 lg:px-24">
+        {gridProducts.map((product) => (
+            <div class="deodorant-grid-item group cursor-pointer opacity-0 transform translate-y-12">
+                <!-- 1:1 Image Container -->
+                <div class="aspect-square w-full overflow-hidden mb-8 bg-white rounded-2xl transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#2b65ff]/10">
+                    <img 
+                        src={product.img} 
+                        alt={product.name} 
+                        class="w-full h-full object-contain p-12 transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                        loading="lazy"
+                    />
+                </div>
+                
+                <!-- Centered Details -->
+                <div class="text-center px-4">
+                    <span class="text-[8px] font-black tracking-[0.5em] text-[#2b65ff] uppercase block mb-3 opacity-60">
+                        {product.category}
+                    </span>
+                    <h4 class="text-xl font-bold tracking-tighter mb-2 group-hover:text-[#2b65ff] transition-colors duration-300">
+                        {product.name}
+                    </h4>
+                    <div class="flex flex-col items-center gap-3">
+                        <span class="text-sm font-black tracking-widest text-zinc-400">${product.price}</span>
+                        <button class="bg-black text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#2b65ff] transition-all transform group-hover:translate-y-0 opacity-0 group-hover:opacity-100 translate-y-4">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        gsap.to(".deodorant-grid-item", {
+            scrollTrigger: {
+                trigger: ".deodorant-grid-section",
+                start: "top 75%",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.1,
+            ease: "power4.out"
+        });
+    });
+</script>

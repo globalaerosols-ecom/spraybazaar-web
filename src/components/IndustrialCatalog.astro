@@ -1,0 +1,36 @@
+---
+const industrialListProducts = [
+    { id: 16, name: "Silicone Release Spray", brand: "Aura", price: "18.00", img: "/images/industrial/catalog_silicone.png", type: "Molding" },
+    { id: 17, name: "Anti-Seize Lubricant", brand: "Onyx", price: "24.00", img: "/images/industrial/catalog_antiseize.png", type: "Heavy Duty" },
+    { id: 18, name: "Dry Graphite Spray", brand: "Zenith", price: "22.00", img: "/images/industrial/catalog_graphite.png", type: "Dry Lube" },
+    { id: 19, name: "Rust Converter Aerosol", brand: "Vibe", price: "20.00", img: "/images/industrial/catalog_rustconverter.png", type: "Treatment" },
+    { id: 20, name: "Leak Detector Spray", brand: "Aura", price: "15.00", img: "/images/industrial/catalog_leakdetector.png", type: "Safety" },
+    { id: 21, name: "Degreaser Pro Mist", brand: "Onyx", price: "16.50", img: "/images/industrial/catalog_degreaser.png", type: "Cleaning" }
+];
+---
+<section class="industrial-catalog-section w-full py-32 bg-white">
+    <div class="px-6 lg:px-24 mb-16">
+        <h3 class="text-2xl font-black uppercase tracking-widest text-zinc-300 mb-8 italic">Industrial Inventory / <span class="text-black">Catalog</span></h3>
+    </div>
+
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+            {industrialListProducts.map((product) => (
+                <div class="catalog-item flex items-center gap-8 py-6 border-b border-zinc-100 hover:bg-[#fbfbfb] px-4 transition-colors group cursor-pointer">
+                    <div class="w-20 h-20 bg-zinc-50 rounded-xl overflow-hidden flex items-center justify-center">
+                        <img src={product.img} class="w-full h-full object-cover group-hover:scale-110 transition-transform" alt={product.name} />
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-[8px] font-black tracking-widest text-[#2b65ff] uppercase mb-1">{product.brand}</p>
+                        <h5 class="text-lg font-bold tracking-tight">{product.name}</h5>
+                        <p class="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">{product.type}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xl font-black mb-2">${product.price}</p>
+                        <button class="text-[9px] font-black uppercase tracking-widest text-[#2b65ff] group-hover:underline">Order Now</button>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

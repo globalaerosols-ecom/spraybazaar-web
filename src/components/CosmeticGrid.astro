@@ -1,0 +1,145 @@
+---
+const cosmeticProducts = [
+    {
+        id: 1,
+        name: "Aura Arctic Blast",
+        category: "Personal Hygiene / Deodorant",
+        price: "18",
+        img: "/images/cosmetics/deodorant.png",
+        tag: "Fresh",
+        rating: "12k",
+        desc: "24h protection with a crisp, arctic finish."
+    },
+    {
+        id: 2,
+        name: "Silk Mist Volume",
+        category: "Hair Care / Styling",
+        price: "24",
+        img: "/images/cosmetics/hair-spray.png",
+        tag: "Bestseller",
+        rating: "8k",
+        desc: "Weightless volume for professional salon styling."
+    },
+    {
+        id: 3,
+        name: "Neon Glaze: Sapphire",
+        category: "Color Spray / Hair",
+        price: "22",
+        img: "/images/cosmetics/color-spray.png",
+        tag: "New",
+        rating: "3k",
+        desc: "Vibrant sapphire blue with a high-gloss finish."
+    },
+    {
+        id: 4,
+        name: "Neon Glaze: Amethyst",
+        category: "Color Spray / Hair",
+        price: "22",
+        img: "/images/cosmetics/color-spray.png",
+        tag: "New",
+        rating: "2k",
+        desc: "Deep amethyst purple for bold artistic expression."
+    }
+];
+---
+<section id="product-grid" class="w-full py-32 bg-white relative overflow-hidden">
+    <div class="px-6 lg:px-24 mb-20">
+        <span id="grid-label" class="text-[#2b65ff] text-[10px] font-bold uppercase tracking-[0.3em] mb-4 block opacity-0">Premium Catalog</span>
+        <h2 id="grid-title" class="text-4xl md:text-6xl font-black tracking-tighter opacity-0">
+            PERSONAL CARE <span class="text-[#2b65ff] opacity-30">/ 2026</span>
+        </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 px-6 lg:px-24">
+        {cosmeticProducts.map((product) => (
+            <div class="cosmetic-card group opacity-0">
+                <div class="relative aspect-[4/5] bg-[#f9fbff] rounded-[2.5rem] p-8 flex items-center justify-center overflow-hidden border border-zinc-100 transition-colors group-hover:border-[#2b65ff]/20">
+                    {product.tag && (
+                        <span class="absolute top-6 left-6 z-20 bg-[#2b65ff] text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">
+                            {product.tag}
+                        </span>
+                    )}
+                    
+                    <div class="image-jelly w-full h-full flex items-center justify-center">
+                        <img src={product.img} class="w-4/5 h-4/5 object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-110" alt={product.name} loading="lazy">
+                    </div>
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#2b65ff]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+
+                <div class="mt-8 px-4">
+                    <p class="text-[9px] font-bold text-[#2b65ff] uppercase tracking-widest mb-2">{product.category}</p>
+                    <h3 class="text-xl font-bold tracking-tight mb-2 group-hover:text-[#2b65ff] transition-colors">{product.name}</h3>
+                    <p class="text-xs text-zinc-400 line-clamp-2 mb-4">{product.desc}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-black text-zinc-900">${product.price}</span>
+                        <div class="flex items-center gap-1">
+                            <span class="text-yellow-400 text-xs">★</span>
+                            <span class="text-[10px] font-bold text-zinc-400 uppercase">({product.rating})</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    .cosmetic-card {
+        cursor: pointer;
+    }
+</style>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined' || typeof SplitType === 'undefined') return;
+
+        const title = document.getElementById('grid-title');
+        const label = document.getElementById('grid-label');
+        
+        const splitTitle = new SplitType(title, { types: 'chars' });
+        
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#product-grid",
+                start: "top 80%"
+            }
+        });
+
+        tl.to(label, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6
+        })
+        .from(splitTitle.chars, {
+            opacity: 0,
+            y: 50,
+            stagger: 0.02,
+            duration: 0.8,
+            ease: "power4.out"
+        }, "-=0.4")
+        .to(".cosmetic-card", {
+            opacity: 1,
+            duration: 0.1,
+            stagger: 0.1
+        }, "-=0.6");
+
+        // Jelly Pop Animation for Cards
+        gsap.utils.toArray(".cosmetic-card").forEach((card, i) => {
+            const jelly = card.querySelector('.image-jelly');
+            
+            gsap.from(jelly, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%"
+                },
+                scale: 0.5,
+                opacity: 0,
+                duration: 1.5,
+                ease: "elastic.out(1, 0.6)",
+                force3D: true,
+                delay: i * 0.1
+            });
+        });
+    });
+</script>

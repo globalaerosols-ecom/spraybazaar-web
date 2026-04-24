@@ -1,0 +1,22 @@
+---
+const industrialGridItems = [
+    { title: "Lubricants", desc: "Anti-friction and moisture removal.", icon: "M" },
+    { id: 2, title: "Zinc Coating", desc: "Cold galvanizing for metal structures.", icon: "Z" },
+    { id: 3, title: "Cleaners", desc: "Degreasers and contact cleaners.", icon: "C" },
+    { id: 4, title: "Greases", desc: "High-temp and lithium lubrication.", icon: "G" }
+];
+---
+<section class="industrial-grid-section w-full py-24 bg-[#0a0a0c]">
+    <div class="px-6 lg:px-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {industrialGridItems.map((item) => (
+            <div class="industrial-grid-card group p-10 bg-zinc-900/50 rounded-[3rem] border border-white/5 transition-all hover:bg-zinc-800 hover:border-white/10 hover:-translate-y-2">
+                <div class="w-12 h-12 rounded-2xl mb-8 flex items-center justify-center bg-[#2b65ff]/10 text-[#2b65ff] font-black text-xl">
+                    {item.icon}
+                </div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4 text-white">{item.title}</h3>
+                <p class="text-zinc-500 text-sm font-medium mb-8">{item.desc}</p>
+                <a href="#" class="text-[10px] font-black uppercase tracking-widest text-[#2b65ff] group-hover:translate-x-2 transition-transform inline-block">Explore Series →</a>
+            </div>
+        ))}
+    </div>
+</section>

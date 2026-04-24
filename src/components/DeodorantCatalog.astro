@@ -1,0 +1,40 @@
+---
+const listProducts = [
+    { id: 16, name: "Silk Pure Cotton", brand: "Silk", price: "19.00", img: "/images/cosmetics/deodorant.png", type: "Clean" },
+    { id: 17, name: "Aura Zen Mist", brand: "Aura", price: "24.00", img: "/images/cosmetics/deodorant.png", type: "Calming" },
+    { id: 18, name: "Onyx Stealth", brand: "Onyx", price: "22.00", img: "/images/cosmetics/industrial-spray-luxury.png", type: "Unscented" },
+    { id: 19, name: "Vibe Night Racer", brand: "Vibe", price: "20.00", img: "/images/cosmetics/deodorant.png", type: "Intense" },
+    { id: 20, name: "Zenith Arctic Rose", brand: "Zenith", price: "30.00", img: "/images/cosmetics/shimmer-spray-luxury.png", type: "Floral Luxury" },
+    { id: 21, name: "Silk Soft Petal", brand: "Silk", price: "18.00", img: "/images/cosmetics/deodorant.png", type: "Gentle" },
+    { id: 22, name: "Onyx Iron Bark", brand: "Onyx", price: "23.00", img: "/images/cosmetics/industrial-spray-luxury.png", type: "Woody" },
+    { id: 23, name: "Aura Hydra Breeze", brand: "Aura", price: "21.00", img: "/images/cosmetics/deodorant.png", type: "Mist" },
+    { id: 24, name: "Vibe Citrus Rush", brand: "Vibe", price: "16.50", img: "/images/cosmetics/deodorant.png", type: "Energizing" },
+    { id: 25, name: "Zenith Platinum", brand: "Zenith", price: "45.00", img: "/images/cosmetics/deodorant-luxury.png", type: "Collectors" }
+];
+---
+<section class="deodorant-catalog-section w-full py-32 bg-white">
+    <div class="px-6 lg:px-24 mb-16">
+        <h3 class="text-2xl font-black uppercase tracking-widest text-zinc-300 mb-8 italic">Full Inventory / <span class="text-black">Catalog</span></h3>
+    </div>
+
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+            {listProducts.map((product) => (
+                <div class="catalog-item flex items-center gap-8 py-6 border-b border-zinc-100 hover:bg-[#fbfbfb] px-4 transition-colors group cursor-pointer">
+                    <div class="w-20 h-20 bg-zinc-50 rounded-xl overflow-hidden flex items-center justify-center p-2">
+                        <img src={product.img} class="w-full h-full object-contain group-hover:scale-110 transition-transform" alt={product.name} />
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-[8px] font-black tracking-widest text-[#2b65ff] uppercase mb-1">{product.brand}</p>
+                        <h5 class="text-lg font-bold tracking-tight">{product.name}</h5>
+                        <p class="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">{product.type}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xl font-black mb-2">${product.price}</p>
+                        <button class="text-[9px] font-black uppercase tracking-widest text-[#2b65ff] group-hover:underline">Buy Now</button>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,73 @@
+---
+const industrialProducts = [
+    { id: 1, name: "Multi-Purpose Lubricant", brand: "WD-Pro", price: "12.50", img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=600", type: "Lubricant", desc: "Stops squeaks, removes moisture, and protects." },
+    { id: 2, name: "Cold Galvanizing Spray", brand: "Aura Zinc", price: "28.00", img: "https://images.unsplash.com/photo-1595152244561-39693d8aa531?auto=format&fit=crop&q=80&w=600", type: "Coating", desc: "Pure zinc protection for steel structures." },
+    { id: 3, name: "Brake Cleaner Pro", brand: "Onyx Mech", price: "15.00", img: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=600", type: "Cleaner", desc: "Non-chlorinated fast-acting cleaning formula." },
+    { id: 4, name: "Silicone Spray", brand: "Vibe Ind", price: "18.00", img: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&q=80&w=600", type: "Maintenance", desc: "Waterproof lubrication for rubber and plastic." },
+    { id: 5, name: "White Lithium Grease", brand: "Aura Mech", price: "22.00", img: "https://images.unsplash.com/photo-1590235225167-15c8a0d9b720?auto=format&fit=crop&q=80&w=600", type: "Grease", desc: "Long-lasting heavy duty metal-to-metal lubrication." },
+    { id: 6, name: "Contact Cleaner", brand: "Zenith Tech", price: "19.50", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600", type: "Electronic", desc: "Quick-drying cleaner for sensitive electronics." }
+];
+---
+<section class="industrial-scroller-section w-full py-32 bg-white overflow-hidden">
+    <div class="px-6 lg:px-24 mb-16 flex justify-between items-end">
+        <div>
+            <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Essential Supplies</span>
+            <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-none">AEROSOL <span class="text-zinc-200">SOLUTIONS</span></h2>
+        </div>
+        <div class="hidden md:flex gap-4">
+            <button class="scroll-prev w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center hover:bg-[#2b65ff] hover:text-white transition-colors">←</button>
+            <button class="scroll-next w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center hover:bg-[#2b65ff] hover:text-white transition-colors">→</button>
+        </div>
+    </div>
+
+    <!-- Horizontal Scroll Container -->
+    <div class="scroller-container flex gap-8 overflow-x-hidden px-6 lg:px-24 cursor-grab select-none no-scrollbar">
+        {industrialProducts.map((product) => (
+            <div class="scroller-item min-w-[300px] md:min-w-[400px] group">
+                <div class="aspect-[4/5] w-full bg-[#fbfbfb] rounded-3xl overflow-hidden mb-8 shadow-sm transition-shadow group-hover:shadow-xl group-hover:shadow-[#2b65ff]/5">
+                    <img src={product.img} alt={product.name} class="w-full h-full object-cover p-0 transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+                </div>
+                <div class="px-4">
+                    <p class="text-[9px] font-black tracking-[0.3em] text-[#2b65ff] uppercase mb-2">{product.brand}</p>
+                    <h4 class="text-2xl font-bold tracking-tighter mb-4">{product.name}</h4>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xl font-black">${product.price}</span>
+                        <button class="bg-black text-white text-[10px] font-bold uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#2b65ff] transition-colors">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined') return;
+
+        const container = document.querySelector('.scroller-container');
+        const next = document.querySelector('.scroll-next');
+        const prev = document.querySelector('.scroll-prev');
+
+        const scrollAmount = 450;
+
+        if (next && prev) {
+            next.addEventListener('click', () => {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
+
+            prev.addEventListener('click', () => {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+        }
+    });
+</script>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>

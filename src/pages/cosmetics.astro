@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CosmeticHero from '../components/CosmeticHero.astro';
+import CosmeticCategoryGrid from '../components/CosmeticCategoryGrid.astro';
+import CosmeticGrid from '../components/CosmeticGrid.astro';
+import BrandMarquee from '../components/BrandMarquee.astro';
+import CosmeticLifestyle from '../components/CosmeticLifestyle.astro';
+import CosmeticProductStack from '../components/CosmeticProductStack.astro';
+import CosmeticReviewSection from '../components/CosmeticReviewSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Personal Care & Cosmetics | Spray Bazaar Professional">
+	<Header />
+	<main>
+		<CosmeticHero />
+		<CosmeticCategoryGrid />
+		<CosmeticGrid />
+		<BrandMarquee />
+		<CosmeticLifestyle />
+		<CosmeticProductStack />
+		<CosmeticReviewSection />
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		overflow-x: hidden;
+		background: #fff;
+	}
+</style>

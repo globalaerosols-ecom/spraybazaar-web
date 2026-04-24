@@ -1,0 +1,95 @@
+---
+const gridProducts = [
+    {
+        name: "Aura Hair Mist",
+        price: "45.00",
+        img: "/images/cosmetics/hair-mist-luxury.png",
+        category: "HAIR CARE"
+    },
+    {
+        name: "Arctic Silk Deodorant",
+        price: "35.00",
+        img: "/images/cosmetics/deodorant.png",
+        category: "HYGIENE"
+    },
+    {
+        name: "Midnight Shimmer",
+        price: "60.00",
+        img: "/images/cosmetics/shimmer-spray-luxury.png",
+        category: "BODY"
+    },
+    {
+        name: "Elite Hair Lacquer",
+        price: "50.00",
+        img: "/images/cosmetics/hair-lacquer-luxury.png",
+        category: "STYLING"
+    },
+    {
+        name: "Matte Pro Industrial",
+        price: "28.00",
+        img: "/images/cosmetics/industrial-spray-luxury.png",
+        category: "PROFESSIONAL"
+    },
+    {
+        name: "Pure Silver Mist",
+        price: "42.00",
+        img: "/images/cosmetics/deodorant-luxury.png",
+        category: "REFRESH"
+    }
+];
+---
+<section class="product-stack-section w-full py-32 bg-white relative">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-12 px-6 lg:px-24">
+        {gridProducts.map((product) => (
+            <div class="product-stack-item group cursor-pointer opacity-0 transform translate-y-12">
+                <!-- 1:1 Image Container -->
+                <div class="aspect-square w-full overflow-hidden mb-8 bg-[#fbfbfb] rounded-sm transition-shadow duration-500 group-hover:shadow-2xl group-hover:shadow-black/5">
+                    <img 
+                        src={product.img} 
+                        alt={product.name} 
+                        class="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                    />
+                </div>
+                
+                <!-- Centered Details -->
+                <div class="text-center px-4">
+                    <span class="text-[8px] font-black tracking-[0.5em] text-[#2b65ff] uppercase block mb-3 opacity-60">
+                        {product.category}
+                    </span>
+                    <h4 class="text-xl font-bold tracking-tighter mb-2 group-hover:text-[#2b65ff] transition-colors duration-300" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+                        {product.name}
+                    </h4>
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-xs font-bold text-zinc-300">$</span>
+                        <span class="text-sm font-black tracking-widest text-zinc-900">{product.price}</span>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        gsap.to(".product-stack-item", {
+            scrollTrigger: {
+                trigger: ".product-stack-section",
+                start: "top 75%",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.15,
+            ease: "power4.out"
+        });
+    });
+</script>
+
+<style>
+    .product-stack-item {
+        /* Ensuring crisp rendering for premium look */
+        -webkit-font-smoothing: antialiased;
+    }
+</style>

@@ -1,0 +1,116 @@
+---
+---
+<section class="deodorant-hero relative w-full h-screen overflow-hidden bg-white flex flex-col md:flex-row">
+    <!-- Left Side: Light/Morning -->
+    <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group">
+        <div class="hero-split-img absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
+            <img src="/images/cosmetics/deodorant-hero-light.png" class="w-full h-full object-cover" alt="Morning Freshness">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/10 to-transparent z-10"></div>
+        
+        <div class="absolute bottom-0 left-0 w-full p-12 z-20 split-content-left opacity-0 transform translate-y-8">
+            <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Morning Ritual</span>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight mb-6">
+                AURA <br/> PURE WHITE.
+            </h2>
+            <p class="text-zinc-600 text-sm max-w-xs font-medium leading-relaxed mb-8">
+                Start your day with the ethereal brilliance of our signature dry-touch formula.
+            </p>
+            <button class="px-8 py-3 rounded-full border border-zinc-200 text-[10px] font-black uppercase tracking-widest hover:bg-zinc-900 hover:text-white transition-all">
+                Shop Aura →
+            </button>
+        </div>
+    </div>
+
+    <!-- Right Side: Dark/Midnight -->
+    <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group">
+        <div class="hero-split-img absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
+            <img src="/images/cosmetics/deodorant-hero-dark.png" class="w-full h-full object-cover" alt="Midnight Precision">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+        
+        <div class="absolute bottom-0 left-0 w-full p-12 z-20 split-content-right opacity-0 transform translate-y-8">
+            <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Midnight Edition</span>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight mb-6 text-white">
+                ONYX <br/> PRECISION.
+            </h2>
+            <p class="text-zinc-400 text-sm max-w-xs font-medium leading-relaxed mb-8">
+                Uncompromising protection for the sophisticated evening silhouette.
+            </p>
+            <button class="px-8 py-3 rounded-full border border-white/20 text-[10px] font-black uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all">
+                Shop Onyx →
+            </button>
+        </div>
+    </div>
+
+    <!-- Top Centered Title -->
+    <div class="absolute top-28 md:top-36 left-1/2 -translate-x-[53%] z-40 w-full text-center px-6 deodorant-main-title opacity-0 transform -translate-y-4">
+        <h1 class="text-3xl md:text-7xl font-black tracking-tighter drop-shadow-sm" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <span class="text-black">Engineered</span> <span class="text-[#2b65ff]">Freshness</span>
+        </h1>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-4 text-black hidden md:flex">
+        <span class="text-[8px] font-black uppercase tracking-[0.3em] opacity-40">Explore Collection</span>
+        <div class="w-[1px] h-12 bg-black/10 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1/2 bg-[#2b65ff] animate-scroll-dash"></div>
+        </div>
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined') return;
+
+        const tl = gsap.timeline();
+
+        tl.to(".deodorant-main-title", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "power4.out"
+        })
+        .to(".split-content-left", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power4.out"
+        }, "-=1.2")
+        .to(".split-content-right", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power4.out"
+        }, "-=1");
+
+        // Move backwards and settle animation
+        gsap.set(".hero-split-img", { scale: 1.1 });
+        gsap.from(".hero-split-img", {
+            scale: 1.6,
+            duration: 2.5,
+            ease: "power4.out",
+            stagger: 0.1,
+            force3D: true
+        });
+
+        // Subtle side-to-side drift for images
+        gsap.to(".hero-split-img", {
+            x: -20,
+            duration: 20,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    });
+</script>
+
+<style>
+    @keyframes scroll-dash {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(200%); }
+    }
+    .animate-scroll-dash {
+        animation: scroll-dash 2s infinite ease-in-out;
+    }
+</style>

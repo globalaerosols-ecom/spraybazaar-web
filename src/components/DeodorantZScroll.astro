@@ -1,0 +1,108 @@
+---
+const zSections = [
+    {
+        title: "START THE DAY RIGHT.",
+        description: "Your morning ritual deserves the pinnacle of aerosol innovation. Our signature dry-touch formula ensures instant freshness that lasts from the first spray.",
+        badge: "Morning Routine",
+        image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200",
+        reverse: false
+    },
+    {
+        title: "BEYOND PERFORMANCE.",
+        description: "Engineered for those who thrive in motion. 72-hour moisture control meets advanced odor-neutralizing technology to keep you ahead of the game.",
+        badge: "Active Sport",
+        image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200",
+        reverse: true
+    },
+    {
+        title: "ELITE SIGNATURE.",
+        description: "Sophisticated scent profiles meet professional-grade protection. Minimalist, powerful, and invisible—designed for the executive world.",
+        badge: "Professional",
+        image: "https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?auto=format&fit=crop&q=80&w=1200",
+        reverse: false
+    }
+];
+---
+
+<section class="z-scroll-section w-full py-40 bg-white overflow-hidden">
+    <div class="max-w-[1600px] mx-auto px-6 lg:px-24 flex flex-col gap-40 md:gap-60">
+        {zSections.map((section) => (
+            <div class={`z-row flex flex-col ${section.reverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-16 md:gap-24`}>
+                <!-- Image Side -->
+                <div class="z-image-container relative w-full md:w-1/2 aspect-[4/5] md:aspect-[16/11] overflow-hidden rounded-[2.5rem] bg-zinc-100 opacity-0 transform translate-y-12 shrink-0">
+                    <img 
+                        src={section.image} 
+                        class="w-full h-full object-cover transition-transform duration-1000 z-parallax-img" 
+                        alt={section.title}
+                        loading="lazy"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="z-text-container w-full md:w-1/2 flex flex-col items-start gap-8 opacity-0 transform translate-y-12">
+                    <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em]">
+                        {section.badge}
+                    </span>
+                    <h2 class="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] text-zinc-900 z-reveal-title">
+                        {section.title}
+                    </h2>
+                    <p class="text-zinc-500 text-sm md:text-lg max-w-md font-medium leading-relaxed">
+                        {section.description}
+                    </p>
+                    <div class="w-16 h-[2px] bg-[#2b65ff]"></div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        const rows = document.querySelectorAll('.z-row');
+        
+        rows.forEach((row) => {
+            const imageContainer = row.querySelector('.z-image-container');
+            const textContainer = row.querySelector('.z-text-container');
+            const img = row.querySelector('.z-parallax-img');
+            const title = row.querySelector('.z-reveal-title');
+
+            // Fade in row components
+            gsap.to([imageContainer, textContainer], {
+                scrollTrigger: {
+                    trigger: row,
+                    start: "top 80%",
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                stagger: 0.2,
+                ease: "power4.out"
+            });
+
+            // Parallax effect on image
+            gsap.to(img, {
+                scrollTrigger: {
+                    trigger: row,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: 1
+                },
+                scale: 1.2,
+                y: 50,
+                ease: "none"
+            });
+        });
+    });
+</script>
+
+<style>
+    .z-scroll-section {
+        clip-path: inset(0 0 0 0);
+    }
+    .z-parallax-img {
+        will-change: transform;
+    }
+</style>

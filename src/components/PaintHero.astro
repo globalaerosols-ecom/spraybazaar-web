@@ -1,0 +1,104 @@
+---
+---
+<section class="paint-hero relative w-full h-screen overflow-hidden bg-white flex flex-col md:flex-row">
+    <!-- Left Side: Electric Blue / Teal -->
+    <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group border-r border-white/10">
+        <div class="hero-split-img absolute inset-0 transition-transform duration-[3s] ease-out group-hover:scale-110">
+            <img src="/images/paints/paint-hero-blue.png" class="w-full h-full object-cover" alt="Electric Blue Series">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#003d4d]/90 via-transparent to-transparent z-10"></div>
+        
+        <div class="absolute bottom-0 left-0 w-full p-12 z-20 split-content-left opacity-0 transform translate-y-8">
+            <span class="text-[#00f2ff] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Artistic Series</span>
+            <h2 class="text-4xl md:text-6xl font-black tracking-tighter leading-tight mb-6 text-white">
+                ELECTRIC <br/> CYAN.
+            </h2>
+            <p class="text-cyan-100/60 text-sm max-w-xs font-medium leading-relaxed mb-8">
+                Unleash raw energy with our high-pigment cyan formula. Engineered for the bold.
+            </p>
+            <button class="px-8 py-3 rounded-full border border-cyan-400/30 text-[10px] font-black uppercase tracking-widest text-white hover:bg-[#00f2ff] hover:text-black transition-all">
+                Shop Cyan →
+            </button>
+        </div>
+    </div>
+
+    <!-- Right Side: Sunset Orange / Magenta -->
+    <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group">
+        <div class="hero-split-img absolute inset-0 transition-transform duration-[3s] ease-out group-hover:scale-110">
+            <img src="/images/paints/paint-hero-orange.png" class="w-full h-full object-cover" alt="Sunset Orange Collection">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#4d0026]/90 via-transparent to-transparent z-10"></div>
+        
+        <div class="absolute bottom-0 left-0 w-full p-12 z-20 split-content-right opacity-0 transform translate-y-8">
+            <span class="text-[#ff0080] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Creative Series</span>
+            <h2 class="text-4xl md:text-6xl font-black tracking-tighter leading-tight mb-6 text-white">
+                VIVID <br/> MAGENTA.
+            </h2>
+            <p class="text-magenta-100/60 text-sm max-w-xs font-medium leading-relaxed mb-8">
+                Capture the warmth of the golden hour with our signature sunset palette.
+            </p>
+            <button class="px-8 py-3 rounded-full border border-magenta-400/30 text-[10px] font-black uppercase tracking-widest text-white hover:bg-[#ff0080] hover:text-black transition-all">
+                Shop Magenta →
+            </button>
+        </div>
+    </div>
+
+    <!-- Top Centered Title -->
+    <div class="absolute top-28 md:top-36 left-1/2 -translate-x-1/2 z-40 w-full text-center px-6 paint-main-title opacity-0 transform -translate-y-4">
+        <h1 class="text-3xl md:text-8xl font-black tracking-tighter drop-shadow-2xl" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <span class="text-white mix-blend-difference">Spray</span> <span class="text-[#2b65ff]">Paints</span>
+        </h1>
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined') return;
+
+        const tl = gsap.timeline();
+
+        tl.to(".paint-main-title", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "power4.out"
+        })
+        .to(".split-content-left", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power4.out"
+        }, "-=1.2")
+        .to(".split-content-right", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power4.out"
+        }, "-=1");
+
+        // Move backwards and settle animation
+        gsap.set(".hero-split-img", { scale: 1.1 });
+        gsap.from(".hero-split-img", {
+            scale: 1.6,
+            duration: 2.5,
+            ease: "power4.out",
+            stagger: 0.1,
+            force3D: true
+        });
+
+        // Subtle side-to-side drift for images
+        gsap.to(".hero-split-img", {
+            x: -20,
+            duration: 20,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    });
+</script>
+
+<style>
+    .paint-hero {
+        background-color: #000;
+    }
+</style>

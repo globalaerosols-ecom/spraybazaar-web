@@ -1,0 +1,181 @@
+---
+---
+<section id="product-section" class="w-full py-24 relative overflow-hidden">
+    <!-- Subtle Premium Background Gradient -->
+    <div class="absolute inset-0 bg-[#f9fbff] -z-10"></div>
+    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-[120px] -z-10"></div>
+    
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 px-6 lg:px-12">
+        <div class="">
+            <span id="product-label" class="text-[#2b65ff] text-[10px] font-bold uppercase tracking-[0.3em] mb-4 block opacity-0">Our Catalog</span>
+            <h2 id="product-title" class="text-4xl md:text-6xl font-black tracking-tighter leading-tight opacity-0">
+                Precision <br class="hidden md:block"/> Engineered <span class="text-[#2b65ff] opacity-40">/ 06</span>
+            </h2>
+        </div>
+        <div class="flex items-center glass-filter rounded-full p-1.5 mt-8 md:mt-0 header-anim border border-black/5 opacity-0">
+            <button class="px-6 py-2 rounded-full text-[11px] font-bold bg-[#2b65ff] text-white shadow-lg shadow-blue-500/20">Series A</button>
+            <button class="px-6 py-2 rounded-full text-[11px] font-bold text-zinc-400 hover:text-zinc-600 transition-colors">Industrial</button>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6 lg:px-12">
+        {[
+            { id: 1, name: "Spray Bazaar Pro Matte", series: "Professional Series", price: "45", img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&q=80&w=600", tag: "Featured", slug: "/products/bazaar-pro", rating: "25k" },
+            { id: 2, name: "Bazaar Weekend Classic", series: "Standard Finish", price: "35", img: "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80&w=600", rating: "8k" },
+            { id: 3, name: "Bazaar Neo-Glide", series: "Eco-Series", price: "38", img: "https://images.unsplash.com/photo-1621600411688-4be93cd68504?auto=format&fit=crop&q=80&w=600", rating: "56" },
+            { id: 4, name: "Bazaar Industrial Pro", series: "Bulk Series", price: "120", img: "https://images.unsplash.com/photo-1595152244561-39693d8aa531?auto=format&fit=crop&q=80&w=600", rating: "1k" }
+        ].map((product) => (
+            <a href={product.slug || "#"} class="product-card group relative block no-underline text-inherit">
+                <div class="glass-card p-6 rounded-[2.5rem] border border-white/60 bg-white/40 backdrop-blur-md transition-all duration-500 group-hover:bg-white/60 group-hover:border-white group-hover:shadow-[0_20px_50px_rgba(43,101,255,0.1)]">
+                    
+                    <div class="relative aspect-[4/5] rounded-[2rem] bg-gradient-to-br from-white/50 to-zinc-100/30 flex items-center justify-center mb-6 overflow-hidden">
+                        {product.tag && (
+                            <span class="absolute top-4 left-4 z-20 bg-[#2b65ff] text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg shadow-blue-500/20">
+                                {product.tag}
+                            </span>
+                        )}
+                        
+                        <!-- Floating Actions (Visual Placeholders) -->
+                        <div class="absolute inset-0 z-30 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                            <div class="w-12 h-12 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-[#2b65ff] shadow-xl hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-width="2.5"/></svg>
+                            </div>
+                            <div class="w-12 h-12 rounded-full bg-black/80 backdrop-blur-md flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-width="2"/></svg>
+                            </div>
+                        </div>
+
+                        <img src={product.img} 
+                             class="w-4/5 h-4/5 object-contain mix-blend-multiply transition-all duration-700 group-hover:scale-110 group-hover:-rotate-3" 
+                             alt={product.name}
+                             loading="lazy">
+                        
+                        <div class="absolute bottom-4 left-6 flex items-center gap-1.5 z-20 opacity-60 group-hover:opacity-100 transition-opacity">
+                            <span class="text-[#2b65ff] text-xs">★★★★★</span>
+                            <span class="text-[9px] font-bold text-zinc-500 uppercase tracking-tighter">({product.rating})</span>
+                        </div>
+                    </div>
+
+                    <div class="px-2">
+                        <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-1">{product.series}</p>
+                        <h3 class="text-lg font-extrabold tracking-tight mb-2 group-hover:text-[#2b65ff] transition-colors line-clamp-1">{product.name}</h3>
+                        <div class="flex items-center justify-between mt-4">
+                            <span class="text-2xl font-black text-zinc-900">${product.price}</span>
+                            <div class="w-8 h-8 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-300">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-width="2.5"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        ))}
+    </div>
+</section>
+
+<style>
+    .glass-filter {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+    }
+    
+    .product-card {
+        perspective: 1000px;
+    }
+    
+    .glass-card {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+    }
+
+    /* Subtle shine effect on image container */
+    .group:hover .aspect-\[4\/5\]::after {
+        content: '';
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: linear-gradient(
+            45deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 45%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0.1) 55%,
+            transparent 100%
+        );
+        animation: shine 1.5s infinite;
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    @keyframes shine {
+        0% { transform: translate(-30%, -30%); }
+        100% { transform: translate(30%, 30%); }
+    }
+</style>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined' || typeof SplitType === 'undefined') return;
+
+        // Character Split Animation for Header
+        const title = document.getElementById('product-title');
+        const label = document.getElementById('product-label');
+        const filter = document.querySelector('.header-anim');
+        
+        if (!title || !label) return;
+
+        const splitTitle = new SplitType(title, { types: 'chars, words' });
+        const splitLabel = new SplitType(label, { types: 'chars' });
+
+        gsap.set([title, label, filter], { opacity: 1 }); // Reveal containers
+        gsap.set(splitTitle.chars, { y: 60, opacity: 0 });
+        gsap.set(splitLabel.chars, { opacity: 0, x: -10 });
+        gsap.set(filter, { y: 20, opacity: 0 });
+
+        const headerTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#product-section",
+                start: "top 85%",
+            }
+        });
+
+        headerTl.to(splitLabel.chars, {
+            opacity: 1,
+            x: 0,
+            stagger: 0.05,
+            duration: 0.8,
+            ease: "power2.out"
+        })
+        .to(splitTitle.chars, {
+            y: 0,
+            opacity: 1,
+            stagger: 0.02,
+            duration: 1,
+            ease: "power4.out"
+        }, "-=0.6")
+        .to(filter, {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out"
+        }, "-=0.8");
+
+        // Card Entrance Animations
+        gsap.from(".product-card", {
+            scrollTrigger: {
+                trigger: "#product-section",
+                start: "top 80%",
+            },
+            y: 60,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.1,
+            ease: "power4.out",
+            clearProps: "all"
+        });
+
+        if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+        }
+    });
+</script>

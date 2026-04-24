@@ -1,0 +1,179 @@
+---
+---
+<section class="relative min-h-screen">
+  <!-- Hero Background Layer -->
+  <div class="hero-bg"></div>
+
+  <div class="pt-32 pb-20 px-6 lg:px-16 max-w-[95%] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10">
+    
+    <!-- Right: Detail Card Area (Far Right) -->
+    <div class="lg:col-start-10 lg:col-span-3 flex flex-col gap-6 reveal-card justify-self-end">
+        
+        <!-- Main Info Card -->
+        <div class="glass-panel p-6 flex flex-col gap-4">
+            <div>
+                <span class="bg-green-400 text-black text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest mb-2 inline-block">New</span>
+                <h1 class="text-4xl font-extrabold tracking-tighter mb-1 leading-none text-white">Spray Bazaar Pro Matte</h1>
+                <div class="flex items-center justify-between">
+                    <span class="text-2xl font-medium opacity-90 text-white">$45.00</span>
+                    <div class="flex items-center text-blue-400 gap-1 text-sm">
+                        <span>★★★★★</span>
+                        <span class="text-white/60 font-medium">(128)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/50">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                    Always Precision Flow
+                </div>
+                <p class="text-sm leading-relaxed text-white/70">
+                    A sleeker version of our bestselling Pro series, updated for maximum pressure control and instant drying. 
+                    A lightweight aluminum vessel and flexible nozzle make this the most professional finish yet.
+                </p>
+            </div>
+        </div>
+
+        <!-- Options Card -->
+        <div class="glass-panel p-4 flex flex-col gap-4">
+            <!-- Toggles -->
+            <div class="flex bg-white/10 p-1 rounded-full border border-white/10">
+                <button class="flex-1 py-2 text-xs font-bold bg-white text-black rounded-full">Standard</button>
+                <button class="flex-1 py-2 text-xs font-bold text-white/60">Eco-Blend</button>
+            </div>
+
+            <!-- Colors -->
+            <div>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">Color: Midnight Iridescent</p>
+                <div class="flex gap-2">
+                    <div class="swatch bg-zinc-900 active"></div>
+                    <div class="swatch bg-white"></div>
+                    <div class="swatch bg-blue-600"></div>
+                    <div class="swatch bg-rose-500"></div>
+                    <div class="swatch bg-zinc-400"></div>
+                </div>
+            </div>
+
+            <!-- Sizes -->
+            <div>
+                <div class="flex justify-between items-center mb-2">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-white/50">Volume: 400ml</p>
+                    <a href="#" class="text-[10px] font-bold underline text-white/50">Tech Sheet</a>
+                </div>
+                <div class="grid grid-cols-5 gap-2">
+                    <div class="size-btn">200</div>
+                    <div class="size-btn active">400</div>
+                    <div class="size-btn">600</div>
+                    <div class="size-btn">1L</div>
+                    <div class="size-btn">5L</div>
+                </div>
+            </div>
+
+            <!-- Final CTA -->
+            <button class="w-full bg-[#2b65ff] hover:bg-[#1a54ee] py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform active:scale-95 shadow-lg shadow-[#2b65ff]/30 text-white">
+                Add to Cart
+            </button>
+        </div>
+
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  window.addEventListener('load', () => {
+    // Entrance Animations
+    if (typeof gsap !== 'undefined') {
+      const tl = gsap.timeline();
+
+      tl.from(".reveal-card", { x: 100, opacity: 0, duration: 1, ease: "power3.out" });
+    }
+
+    // Swatch Interaction
+    document.querySelectorAll('.swatch').forEach(sw => {
+        sw.addEventListener('click', () => {
+            document.querySelector('.swatch.active').classList.remove('active');
+            sw.classList.add('active');
+        });
+    });
+
+    // Size Interaction
+    document.querySelectorAll('.size-btn').forEach(sz => {
+        sz.addEventListener('click', () => {
+            document.querySelector('.size-btn.active').classList.remove('active');
+            sz.classList.add('active');
+        });
+    });
+  });
+</script>
+
+<style>
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image: url('https://assets.zyrosite.com/A3QlOV94WLSaL6xE/hair-spray-dJoPbZZGvNueGP27.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.7);
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px) saturate(150%);
+    -webkit-backdrop-filter: blur(25px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 32px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .swatch.active {
+    border-color: #2b65ff;
+  }
+
+  .size-btn {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: white;
+  }
+
+  .size-btn:hover {
+    border-color: white;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .size-btn.active {
+    background: #2b65ff;
+    border-color: #2b65ff;
+    color: white;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .drop-shadow-3xl {
+    filter: drop-shadow(0 35px 35px rgba(0, 0, 0, 0.5));
+  }
+</style>

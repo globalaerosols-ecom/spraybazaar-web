@@ -1,0 +1,101 @@
+---
+const deodorantProducts = [
+    // SCROLLER PRODUCTS (6 Items)
+    { id: 1, name: "Aura Arctic Blast", brand: "Aura", price: "18.00", img: "/images/cosmetics/deodorant.png", type: "Fresh", desc: "Long-lasting arctic freshness." },
+    { id: 2, name: "Zenith Silver Mist", brand: "Zenith", price: "22.00", img: "/images/cosmetics/deodorant-luxury.png", type: "Premium", desc: "Minimalist silver finish with a crisp scent." },
+    { id: 3, name: "Onyx Matte Black", brand: "Onyx", price: "25.00", img: "/images/cosmetics/industrial-spray-luxury.png", type: "Active", desc: "High-performance charcoal protection." },
+    { id: 4, name: "Vibe Ocean Breeze", brand: "Vibe", price: "16.00", img: "/images/cosmetics/deodorant.png", type: "Sport", desc: "Refreshing oceanic undertones." },
+    { id: 5, name: "Aura Midnight Oud", brand: "Aura", price: "28.00", img: "/images/cosmetics/shimmer-spray-luxury.png", type: "Luxury", desc: "Exotic oud and wood notes." },
+    { id: 6, name: "Silk Touch Sensitive", brand: "Silk", price: "20.00", img: "/images/cosmetics/deodorant.png", type: "Soft", desc: "Gentle on skin, tough on odor." },
+    
+    // GRID PRODUCTS (9 Items - 3x3)
+    { id: 7, name: "Aura 72H Pure", brand: "Aura", price: "19.00", img: "/images/cosmetics/deodorant.png", type: "Classic", desc: "The original 72-hour protector." },
+    { id: 8, name: "Zenith Gold Standard", brand: "Zenith", price: "32.00", img: "/images/cosmetics/shimmer-spray-luxury.png", type: "Bestseller", desc: "Gold edition luxury mist." },
+    { id: 9, name: "Onyx Ice Crush", brand: "Onyx", price: "21.00", img: "/images/cosmetics/industrial-spray-luxury.png", type: "Extra Fresh", desc: "Instant cooling effect." },
+    { id: 10, name: "Vibe Electric Citrus", brand: "Vibe", price: "15.00", img: "/images/cosmetics/deodorant.png", type: "Zesty", desc: "Powerful citrus burst." },
+    { id: 11, name: "Silk White Satin", brand: "Silk", price: "23.00", img: "/images/cosmetics/deodorant.png", type: "Floral", desc: "Elegant floral scent." },
+    { id: 12, name: "Onyx Carbon Pro", brand: "Onyx", price: "29.00", img: "/images/cosmetics/industrial-spray-luxury.png", type: "Heavy Duty", desc: "Engineered for athletes." },
+    { id: 13, name: "Aura Arctic Lime", brand: "Aura", price: "18.50", img: "/images/cosmetics/deodorant.png", type: "Fruit", desc: "Fresh lime and cool mint." },
+    { id: 14, name: "Zenith Chrome Elite", brand: "Zenith", price: "26.00", img: "/images/cosmetics/deodorant-luxury.png", type: "Sleek", desc: "Modern chrome aesthetics." },
+    { id: 15, name: "Vibe Tropical Pulse", brand: "Vibe", price: "17.00", img: "/images/cosmetics/deodorant.png", type: "Exotic", desc: "A vacation in a spray." },
+
+    // REMAINING CATALOG (10 Items)
+    { id: 16, name: "Silk Pure Cotton", brand: "Silk", price: "19.00", img: "/images/cosmetics/deodorant.png", type: "Clean", desc: "Classic clean cotton scent." },
+    { id: 17, name: "Aura Zen Mist", brand: "Aura", price: "24.00", img: "/images/cosmetics/deodorant.png", type: "Calming", desc: "Lavender and cedarwood." },
+    { id: 18, name: "Onyx Stealth", brand: "Onyx", price: "22.00", img: "/images/cosmetics/industrial-spray-luxury.png", type: "Unscented", desc: "invisible protection." },
+    { id: 19, name: "Vibe Night Racer", brand: "Vibe", price: "20.00", img: "/images/cosmetics/deodorant.png", type: "Intense", desc: "For the night owl." },
+    { id: 20, name: "Zenith Arctic Rose", brand: "Zenith", price: "30.00", img: "/images/cosmetics/shimmer-spray-luxury.png", type: "Floral Luxury", desc: "Frozen rose and metal." },
+    { id: 21, name: "Silk Soft Petal", brand: "Silk", price: "18.00", img: "/images/cosmetics/deodorant.png", type: "Gentle", desc: "Minimal fragrance for sensitive skin." },
+    { id: 22, name: "Onyx Iron Bark", brand: "Onyx", price: "23.00", img: "/images/cosmetics/industrial-spray-luxury.png", type: "Woody", desc: "Deep sandalwood and iron." },
+    { id: 23, name: "Aura Hydra Breeze", brand: "Aura", price: "21.00", img: "/images/cosmetics/deodorant.png", type: "Mist", desc: "Water-based cooling spray." },
+    { id: 24, name: "Vibe Citrus Rush", brand: "Vibe", price: "16.50", img: "/images/cosmetics/deodorant.png", type: "Energizing", desc: "Wake up with a spray." },
+    { id: 25, name: "Zenith Platinum", brand: "Zenith", price: "45.00", img: "/images/cosmetics/deodorant-luxury.png", type: "Collectors", desc: "Exclusive platinum edition." }
+];
+
+const scrollerProducts = deodorantProducts.slice(0, 6);
+const gridProducts = deodorantProducts.slice(6, 15);
+const listProducts = deodorantProducts.slice(15, 25);
+---
+<section class="deodorant-scroller-section w-full py-32 bg-white overflow-hidden">
+    <div class="px-6 lg:px-24 mb-16 flex justify-between items-end">
+        <div>
+            <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block animate-fade">Trending Now</span>
+            <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-none">THE <span class="text-zinc-200">SCENT</span> STACK</h2>
+        </div>
+        <div class="hidden md:flex gap-4">
+            <button class="scroll-prev w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center hover:bg-[#2b65ff] hover:text-white transition-colors">←</button>
+            <button class="scroll-next w-12 h-12 rounded-full border border-zinc-200 flex items-center justify-center hover:bg-[#2b65ff] hover:text-white transition-colors">→</button>
+        </div>
+    </div>
+
+    <!-- Horizontal Scroll Container -->
+    <div class="scroller-container flex gap-8 overflow-x-hidden px-6 lg:px-24 cursor-grab select-none no-scrollbar">
+        {scrollerProducts.map((product) => (
+            <div class="scroller-item min-w-[300px] md:min-w-[400px] group">
+                <div class="aspect-[4/5] w-full bg-[#fbfbfb] rounded-3xl overflow-hidden mb-8 shadow-sm transition-shadow group-hover:shadow-xl group-hover:shadow-[#2b65ff]/5">
+                    <img src={product.img} alt={product.name} class="w-full h-full object-contain p-12 transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+                </div>
+                <div class="px-4">
+                    <p class="text-[9px] font-black tracking-[0.3em] text-[#2b65ff] uppercase mb-2">{product.brand}</p>
+                    <h4 class="text-2xl font-bold tracking-tighter mb-4">{product.name}</h4>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xl font-black">${product.price}</span>
+                        <button class="bg-black text-white text-[10px] font-bold uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#2b65ff] transition-colors">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined') return;
+
+        const container = document.querySelector('.scroller-container');
+        const next = document.querySelector('.scroll-next');
+        const prev = document.querySelector('.scroll-prev');
+
+        const scrollAmount = 450;
+
+        next.addEventListener('click', () => {
+            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+
+        prev.addEventListener('click', () => {
+            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        // Optional Drag functionality or marquee could be added here
+    });
+</script>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>

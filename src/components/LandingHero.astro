@@ -1,0 +1,139 @@
+---
+---
+<section class="landing-hero-grid relative w-full bg-white overflow-hidden">
+    <!-- Row 1: Split Hero (2 Columns) -->
+    <div class="flex flex-col md:flex-row h-screen">
+        <!-- Left Side: Female / Light -->
+        <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group border-b md:border-b-0 md:border-r border-zinc-100">
+            <div class="hero-split-img absolute inset-0 transition-transform duration-[3s] ease-out group-hover:scale-110">
+                <img src="/images/landing/hero-female.png" class="w-full h-full object-cover" alt="Elite Female Care">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/10 to-transparent z-10"></div>
+            
+            <div class="absolute bottom-16 left-0 w-full flex flex-col items-center justify-center z-20 split-content-left opacity-0 transform translate-y-8 px-12 text-center">
+                <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Essentials</span>
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter leading-tight mb-8">
+                    AURA <br/> RADIANCE.
+                </h2>
+                <button class="px-12 py-5 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-[#2b65ff] hover:text-white transition-all shadow-xl">
+                    Shop Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Side: Male / Dark -->
+        <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group">
+            <div class="hero-split-img absolute inset-0 transition-transform duration-[3s] ease-out group-hover:scale-110">
+                <img src="/images/landing/hero-male.png" class="w-full h-full object-cover" alt="Professional Male Series">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+            
+            <div class="absolute bottom-16 left-0 w-full flex flex-col items-center justify-center z-20 split-content-right opacity-0 transform translate-y-8 px-12 text-center">
+                <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block text-white/60">Professional</span>
+                <h2 class="text-4xl md:text-6xl font-black tracking-tighter leading-tight mb-8 text-white">
+                    ONYX <br/> PRECISION.
+                </h2>
+                <button class="px-12 py-5 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-[#2b65ff] hover:text-white transition-all shadow-xl">
+                    Shop Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 2: Triple Grid (3 Columns) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 h-[60vh] md:h-[70vh] border-t border-zinc-100">
+        <!-- Hair Care -->
+        <div class="relative overflow-hidden group border-r border-zinc-100">
+            <div class="hero-split-img absolute inset-0 transition-transform duration-[3s] ease-out group-hover:scale-110">
+                <img src="/images/landing/hero-hair.png" class="w-full h-full object-cover" alt="Hair Care">
+            </div>
+            <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-700"></div>
+            <div class="absolute bottom-0 left-0 w-full p-10 z-20 grid-content opacity-0 transform translate-y-4">
+                <h3 class="text-white text-2xl font-black tracking-tighter mb-4">HAIR SERIES</h3>
+                <button class="text-white text-[9px] font-black uppercase tracking-[0.3em] border-b border-white/40 pb-1 hover:border-white transition-all">Shop Haircare</button>
+            </div>
+        </div>
+
+        <!-- Kitchen Care -->
+        <div class="relative overflow-hidden group border-r border-zinc-100">
+            <div class="hero-split-img absolute inset-0 transition-transform duration-[3s] ease-out group-hover:scale-110">
+                <img src="/images/landing/hero-kitchen.png" class="w-full h-full object-cover" alt="Kitchen Care">
+            </div>
+            <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-700"></div>
+            <div class="absolute bottom-0 left-0 w-full p-10 z-20 grid-content opacity-0 transform translate-y-4">
+                <h3 class="text-white text-2xl font-black tracking-tighter mb-4">KITCHEN PRO</h3>
+                <button class="text-white text-[9px] font-black uppercase tracking-[0.3em] border-b border-white/40 pb-1 hover:border-white transition-all">Shop Industrial</button>
+            </div>
+        </div>
+
+        <!-- Spray Paint -->
+        <div class="relative overflow-hidden group">
+            <div class="hero-split-img absolute inset-0 transition-transform duration-[3s] ease-out group-hover:scale-110">
+                <img src="/images/landing/hero-paint.png" class="w-full h-full object-cover" alt="Spray Paint">
+            </div>
+            <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-700"></div>
+            <div class="absolute bottom-0 left-0 w-full p-10 z-20 grid-content opacity-0 transform translate-y-4">
+                <h3 class="text-white text-2xl font-black tracking-tighter mb-4">COLOR BLAST</h3>
+                <button class="text-white text-[9px] font-black uppercase tracking-[0.3em] border-b border-white/40 pb-1 hover:border-white transition-all">Shop Artistic</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Brand Label (Floating) -->
+    <div class="absolute top-24 left-1/2 -translate-x-1/2 z-40 w-full text-center px-6 hero-brand-label opacity-0 pointer-events-none">
+        <span class="text-[11px] font-black uppercase tracking-[1.5em] text-white mix-blend-difference">Spray Bazaar Professional</span>
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined') return;
+
+        const tl = gsap.timeline();
+
+        tl.to(".hero-brand-label", {
+            opacity: 1,
+            duration: 1.5,
+            ease: "power2.out"
+        })
+        .to(".split-content-left, .split-content-right", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            stagger: 0.2,
+            ease: "power4.out"
+        }, "-=1.0")
+        .to(".grid-content", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.15,
+            ease: "power3.out"
+        }, "-=0.8");
+
+        // Move backwards and settle animation
+        gsap.set(".hero-split-img", { scale: 1.1 });
+        gsap.from(".hero-split-img", {
+            scale: 1.6,
+            duration: 2.5,
+            ease: "power4.out",
+            stagger: 0.1,
+            force3D: true
+        });
+
+        // Subtle side-to-side drift for images
+        gsap.to(".hero-split-img", {
+            x: -20,
+            duration: 20,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    });
+</script>
+
+<style>
+    .landing-hero-grid {
+        background-color: #fff;
+    }
+</style>

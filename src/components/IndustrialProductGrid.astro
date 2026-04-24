@@ -1,0 +1,64 @@
+---
+const industrialGridProducts = [
+    { id: 1, name: "Aura 99.9% Zinc", brand: "Aura", price: "32.00", img: "/images/industrial/product_zinc.png", type: "Galvanizing", category: "PROTECTION" },
+    { id: 2, name: "WD-Pro Multi-Task", brand: "WD-Pro", price: "14.00", img: "/images/industrial/product_wdpro.png", type: "Lubricant", category: "MAINTENANCE" },
+    { id: 3, name: "Onyx Carbon Slate", brand: "Onyx", price: "28.00", img: "/images/industrial/product_onyx.png", type: "Coating", category: "INDUSTRIAL" },
+    { id: 4, name: "Vibe Neon Marker", brand: "Vibe", price: "16.00", img: "/images/industrial/product_vibe.png", type: "Fluorescent", category: "MARKING" },
+    { id: 5, name: "Silk Satin Anti-Rust", brand: "Silk", price: "24.00", img: "/images/industrial/product_silk.png", type: "Protective", category: "CORROSION" },
+    { id: 6, name: "Zenith Tech Cleaner", brand: "Zenith", price: "21.00", img: "/images/industrial/product_zenith.png", type: "Technical", category: "PRECISION" }
+];
+---
+<section class="industrial-grid-section w-full py-32 bg-[#fafafa]">
+    <div class="px-6 lg:px-24 mb-20 text-center">
+        <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Engineered Variants</span>
+        <h2 class="text-5xl md:text-6xl font-black tracking-tighter leading-none">ELITE <span class="text-[#2b65ff]">AEROSOLS</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-12 px-6 lg:px-24">
+        {industrialGridProducts.map((product) => (
+            <div class="industrial-grid-item group cursor-pointer opacity-0 transform translate-y-12">
+                <div class="aspect-square w-full overflow-hidden mb-8 bg-white rounded-2xl transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#2b65ff]/10">
+                    <img 
+                        src={product.img} 
+                        alt={product.name} 
+                        class="w-full h-full object-cover p-0 transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                        loading="lazy"
+                    />
+                </div>
+                
+                <div class="text-center px-4">
+                    <span class="text-[8px] font-black tracking-[0.5em] text-[#2b65ff] uppercase block mb-3 opacity-60">
+                        {product.category}
+                    </span>
+                    <h4 class="text-xl font-bold tracking-tighter mb-2 group-hover:text-[#2b65ff] transition-colors duration-300">
+                        {product.name}
+                    </h4>
+                    <div class="flex flex-col items-center gap-3">
+                        <span class="text-sm font-black tracking-widest text-zinc-400">${product.price}</span>
+                        <button class="bg-black text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#2b65ff] transition-all transform group-hover:translate-y-0 opacity-0 group-hover:opacity-100 translate-y-4">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        gsap.to(".industrial-grid-item", {
+            scrollTrigger: {
+                trigger: ".industrial-grid-section",
+                start: "top 75%",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.1,
+            ease: "power4.out"
+        });
+    });
+</script>

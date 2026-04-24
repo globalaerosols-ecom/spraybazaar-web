@@ -1,0 +1,100 @@
+---
+---
+<section class="section lifestyle-section">
+  <div class="container lifestyle-grid">
+    <div class="lifestyle-content">
+      <h2>Engineered for Excellence</h2>
+      <p>
+        Our proprietary Ultra-Mist technology ensures an even, smooth application every time. Whether you're a professional artist or a DIY enthusiast, Spray Bazaar delivers the finish you deserve.
+      </p>
+      <ul class="lifestyle-list">
+        <li><strong>No-Clog Valve:</strong> Guaranteed performance until the last drop.</li>
+        <li><strong>High-Pressure Delivery:</strong> Consistent spray pattern in any orientation.</li>
+        <li><strong>Quick-Swap Caps:</strong> Switch between detail and broad coverage in seconds.</li>
+      </ul>
+      <a href="/tech" class="btn btn-outline">Explore the Tech</a>
+    </div>
+    <div class="lifestyle-images">
+      <div class="image-large">
+        <img src="/images/lifestyle.png" alt="Artist using spray" />
+      </div>
+      <div class="images-stacked">
+        <img src="/images/lifestyle.png" alt="Spray detail" style="filter: grayscale(0.5) contrast(1.2);" />
+        <img src="/images/lifestyle.png" alt="Color swatch" style="filter: brightness(0.7) sepia(0.3);" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .lifestyle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .lifestyle-content h2 {
+    font-size: 2.5rem;
+  }
+  .lifestyle-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  .lifestyle-list {
+    margin-bottom: 2.5rem;
+  }
+  .lifestyle-list li {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .lifestyle-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+  }
+  .btn-outline {
+    border: 2px solid var(--text-dark);
+    padding: 0.75rem 2rem;
+  }
+  .btn-outline:hover {
+    background: var(--text-dark);
+    color: white;
+  }
+  
+  .lifestyle-images {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1.5rem;
+  }
+  .image-large {
+    border-radius: 20px;
+    overflow: hidden;
+    height: 600px;
+  }
+  .image-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .images-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .images-stacked img {
+    height: 290px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  
+  @media (max-width: 1024px) {
+    .lifestyle-grid {
+      grid-template-columns: 1fr;
+    }
+    .lifestyle-images {
+      order: -1;
+    }
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+const gridItems = [
+    { title: "Artistic Series", desc: "For murals and fine art.", color: "#00f2ff" },
+    { title: "Industrial Pro", desc: "High-durability coatings.", color: "#2b65ff" },
+    { title: "Automotive Elite", desc: "Mirror-finish car paints.", color: "#ff0080" },
+    { title: "Home Decor", desc: "Satin and matte finishes.", color: "#ffaa00" }
+];
+---
+<section class="paint-grid-section w-full py-24 bg-[#f9fbff]">
+    <div class="px-6 lg:px-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {gridItems.map((item) => (
+            <div class="paint-grid-card group p-10 bg-white rounded-[3rem] border border-zinc-100 transition-all hover:shadow-2xl hover:shadow-[#2b65ff]/5 hover:-translate-y-2">
+                <div class="w-12 h-12 rounded-2xl mb-8 flex items-center justify-center" style={`background-color: ${item.color}20`}>
+                    <div class="w-4 h-4 rounded-full" style={`background-color: ${item.color}`}></div>
+                </div>
+                <h3 class="text-2xl font-black tracking-tighter mb-4">{item.title}</h3>
+                <p class="text-zinc-500 text-sm font-medium mb-8">{item.desc}</p>
+                <a href="#" class="text-[10px] font-black uppercase tracking-widest text-[#2b65ff] group-hover:translate-x-2 transition-transform inline-block">Explore Series →</a>
+            </div>
+        ))}
+    </div>
+</section>
+
+<section class="paint-review-section w-full py-32 bg-white">
+    <div class="px-6 lg:px-24 text-center max-w-4xl mx-auto">
+        <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-8 block">Trusted by Professionals</span>
+        <h2 class="text-4xl md:text-6xl font-black tracking-tighter leading-tight mb-12">
+            "Aura paints have completely transformed my mural workflow. The coverage is unmatched."
+        </h2>
+        <div class="flex flex-col items-center">
+            <div class="w-16 h-16 rounded-full bg-zinc-100 mb-4 overflow-hidden">
+                <img src="/images/paints/paint-lifestyle-studio.png" class="w-full h-full object-cover" alt="Reviewer" />
+            </div>
+            <p class="font-black tracking-tighter text-xl">Arjun Mehta</p>
+            <p class="text-zinc-400 text-[10px] font-bold uppercase tracking-widest">Mural Artist, Mumbai</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,169 @@
+---
+---
+<section class="section reviews-section">
+  <div class="container">
+    <div class="reviews-header">
+      <div class="reviews-summary">
+        <h2>Customer Reviews</h2>
+        <div class="rating-big">
+          <span class="number">4.82</span>
+          <div class="stars">★★★★★</div>
+          <p>Based on 482 reviews</p>
+        </div>
+      </div>
+      <div class="rating-bars">
+        <div class="bar-row">
+          <span>5 Star</span>
+          <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
+          <span>85%</span>
+        </div>
+        <div class="bar-row">
+          <span>4 Star</span>
+          <div class="bar-bg"><div class="bar-fill" style="width: 10%;"></div></div>
+          <span>10%</span>
+        </div>
+        <div class="bar-row">
+          <span>3 Star</span>
+          <div class="bar-bg"><div class="bar-fill" style="width: 3%;"></div></div>
+          <span>3%</span>
+        </div>
+        <div class="bar-row">
+          <span>2 Star</span>
+          <div class="bar-bg"><div class="bar-fill" style="width: 1%;"></div></div>
+          <span>1%</span>
+        </div>
+        <div class="bar-row">
+          <span>1 Star</span>
+          <div class="bar-bg"><div class="bar-fill" style="width: 1%;"></div></div>
+          <span>1%</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="reviews-list">
+      <div class="review-card">
+        <div class="review-meta">
+          <div class="stars">★★★★★</div>
+          <span class="date">Oct 12, 2023</span>
+        </div>
+        <h3>Best chameleon effect I've used</h3>
+        <p>"The color shift is insane! I used this on my bike frame and the way it transitions from blue to purple in the sun is exactly what I was looking for. Very easy to apply without drips."</p>
+        <span class="author"><strong>Alex M.</strong> - Verified Buyer</span>
+      </div>
+      
+      <div class="review-card">
+        <div class="review-meta">
+          <div class="stars">★★★★★</div>
+          <span class="date">Sep 28, 2023</span>
+        </div>
+        <h3>Professional results</h3>
+        <p>"I've used many brands for my custom models, but Spray Bazaar's gloss finish is on another level. It settles so smoothly. The nozzle they include for detail work is a game changer."</p>
+        <span class="author"><strong>Sarah K.</strong> - Verified Buyer</span>
+      </div>
+    </div>
+    
+    <div class="reviews-footer">
+      <button class="btn btn-outline">Read All Reviews</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-section {
+    background: white;
+    border-top: 1px solid var(--border-color);
+  }
+  .reviews-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    align-items: center;
+  }
+  .rating-big {
+    margin-top: 1rem;
+  }
+  .rating-big .number {
+    font-size: 4rem;
+    font-weight: 800;
+    display: block;
+    line-height: 1;
+  }
+  .rating-big .stars {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .rating-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .bar-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 40px;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.85rem;
+  }
+  .bar-bg {
+    height: 8px;
+    background: var(--bg-light);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: #ffb400;
+  }
+  
+  .reviews-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  .review-card {
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+  }
+  .review-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .review-meta .stars {
+    font-size: 0.9rem;
+    color: #ffb400;
+  }
+  .review-meta .date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .review-card h3 {
+    margin-bottom: 1rem;
+  }
+  .review-card p {
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .author {
+    font-size: 0.85rem;
+    color: var(--text-dark);
+  }
+  
+  .reviews-footer {
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .reviews-header {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .reviews-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

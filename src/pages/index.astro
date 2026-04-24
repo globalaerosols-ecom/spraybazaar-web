@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import LandingHero from '../components/LandingHero.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import PortfolioFeatured from '../components/PortfolioFeatured.astro';
+import BrandMarquee from '../components/BrandMarquee.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Premium Aerosol Spray | Spray Bazaar Professional">
+	<Header />
+	<main>
+		<LandingHero />
+		<ProductGrid />
+		<PortfolioFeatured />
+		<BrandMarquee />
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		overflow-x: hidden;
+		background: #fff;
+	}
+</style>
