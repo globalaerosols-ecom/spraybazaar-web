@@ -1,0 +1,83 @@
+---
+const luxuryProducts = [
+    { name: "Gold Edition Deodorant", brand: "Aura Signature", price: "85.00", img: "/images/cosmetics/deodorant-luxury.png" },
+    { name: "Noir Hair Lacquer", brand: "Onyx Elite", price: "64.00", img: "/images/cosmetics/hair-lacquer-luxury.png" },
+    { name: "Platinum Shimmer Mist", brand: "Zenith Luxe", price: "92.00", img: "/images/cosmetics/shimmer-spray-luxury.png" },
+    { name: "Emerald Hair Mist", brand: "Vibe Royal", price: "78.00", img: "/images/cosmetics/hair-mist-luxury.png" },
+    { name: "Titanium Industrial Pro", brand: "Titan Series", price: "120.00", img: "/images/cosmetics/industrial-spray-luxury.png" }
+];
+---
+<section class="luxury-horizontal-section w-full py-32 bg-white overflow-hidden">
+    <div class="px-6 lg:px-24 mb-20 flex justify-between items-end">
+        <div>
+            <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Exclusive Range</span>
+            <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-none">SIGNATURE <span class="text-[#2b65ff]">COLLECTION.</span></h2>
+        </div>
+        <div class="hidden md:block">
+            <p class="text-zinc-400 text-sm max-w-[200px] font-medium leading-relaxed">
+                Hand-crafted aerosol formulas for the most demanding environments.
+            </p>
+        </div>
+    </div>
+
+    <div class="horizontal-scroll-container flex gap-8 px-6 lg:px-24 overflow-x-auto pb-12 no-scrollbar">
+        {luxuryProducts.map((product) => (
+            <div class="luxury-product-card flex-none w-[300px] md:w-[450px] group cursor-pointer">
+                <div class="aspect-[4/5] w-full overflow-hidden mb-8 bg-[#f8f8f8] rounded-[2rem] transition-all duration-700 group-hover:shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] group-hover:-translate-y-4">
+                    <img 
+                        src={product.img} 
+                        alt={product.name} 
+                        class="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
+                    />
+                </div>
+                
+                <div class="flex justify-between items-start px-2">
+                    <div>
+                        <span class="text-[8px] font-black tracking-[0.4em] text-zinc-400 uppercase block mb-2">
+                            {product.brand}
+                        </span>
+                        <h4 class="text-xl md:text-2xl font-bold tracking-tighter mb-4 group-hover:text-[#2b65ff] transition-colors duration-300">
+                            {product.name}
+                        </h4>
+                        <span class="text-2xl font-black tracking-tighter text-black block mb-6">${product.price}</span>
+                    </div>
+                    <button class="bg-black text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-[#2b65ff] transition-all transform hover:scale-110 group-hover:translate-y-0 translate-y-2 opacity-0 group-hover:opacity-100 duration-500">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .luxury-product-card {
+        scroll-snap-align: start;
+    }
+</style>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        gsap.from(".luxury-product-card", {
+            scrollTrigger: {
+                trigger: ".luxury-horizontal-section",
+                start: "top 75%",
+            },
+            opacity: 0,
+            x: 100,
+            duration: 1.5,
+            stagger: 0.2,
+            ease: "power4.out"
+        });
+    });
+</script>
