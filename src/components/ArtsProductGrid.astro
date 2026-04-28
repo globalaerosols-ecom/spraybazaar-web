@@ -1,0 +1,64 @@
+---
+const artsGridProducts = [
+    { id: 1, name: "Chroma Spray Paint", brand: "Aura", price: "12.00", img: "https://images.unsplash.com/photo-1541675154750-0444c7d51e8e?fm=webp&w=800&q=70&fit=crop", type: "Paint", category: "VIBRANT COLOR" },
+    { id: 2, name: "Sparkle Glitter Spray", brand: "Aura", price: "15.00", img: "https://images.unsplash.com/photo-1590593162211-f9827b79ad07?fm=webp&w=800&q=70&fit=crop", type: "Effect", category: "METALLIC & GLITTER" },
+    { id: 3, name: "Prism Effect Coat", brand: "Aura", price: "18.00", img: "https://images.unsplash.com/photo-1525909002-1b05e0c869d8?fm=webp&w=800&q=70&fit=crop", type: "Coating", category: "SPECIAL EFFECTS" },
+    { id: 4, name: "Craft Master Adhesive", brand: "Aura", price: "10.00", img: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?fm=webp&w=800&q=70&fit=crop", type: "Adhesive", category: "CRAFT ESSENTIALS" },
+    { id: 5, name: "Neon Glow Spray", brand: "Aura", price: "14.00", img: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?fm=webp&w=800&q=70&fit=crop", type: "Paint", category: "FLUORESCENT" },
+    { id: 6, name: "Matte Finish Varnish", brand: "Aura", price: "13.00", img: "https://images.unsplash.com/photo-1582201942988-13e60e4556ee?fm=webp&w=800&q=70&fit=crop", type: "Protective", category: "FINISHING" }
+];
+---
+<section class="arts-grid-section w-full py-32 bg-[#fafafa]">
+    <div class="px-6 lg:px-24 mb-20 text-center">
+        <span class="text-[#f15a24] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Creative Palette</span>
+        <h2 class="text-5xl md:text-6xl font-black tracking-tighter leading-none">CRAFT <span class="text-[#f15a24]">COLLECTION.</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-12 px-6 lg:px-24">
+        {artsGridProducts.map((product) => (
+            <div class="arts-grid-item group cursor-pointer opacity-0 transform translate-y-12">
+                <div class="aspect-square w-full overflow-hidden mb-8 bg-white rounded-2xl transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#f15a24]/10">
+                    <img 
+                        src={product.img} 
+                        alt={product.name} 
+                        class="w-full h-full object-cover p-0 transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                        loading="lazy"
+                    />
+                </div>
+                
+                <div class="text-center px-4">
+                    <span class="text-[8px] font-black tracking-[0.5em] text-[#f15a24] uppercase block mb-3 opacity-60">
+                        {product.category}
+                    </span>
+                    <h4 class="text-xl font-bold tracking-tighter mb-2 group-hover:text-[#f15a24] transition-colors duration-300">
+                        {product.name}
+                    </h4>
+                    <div class="flex flex-col items-center gap-3">
+                        <span class="text-sm font-black tracking-widest text-zinc-400">${product.price}</span>
+                        <button class="bg-black text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#f15a24] transition-all transform group-hover:translate-y-0 opacity-0 group-hover:opacity-100 translate-y-4">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        gsap.to(".arts-grid-item", {
+            scrollTrigger: {
+                trigger: ".arts-grid-section",
+                start: "top 75%",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.1,
+            ease: "power4.out"
+        });
+    });
+</script>

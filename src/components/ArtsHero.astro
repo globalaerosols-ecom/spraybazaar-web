@@ -1,0 +1,105 @@
+---
+---
+<section class="relative w-full h-screen overflow-hidden bg-white flex flex-col md:flex-row">
+    <!-- Left Side: Paint / Color -->
+    <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group">
+        <div class="hero-split-img absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
+            <img src="/images/arts/hero-paint.png" class="w-full h-full object-cover" alt="Artistic Spray Paints">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent z-10"></div>
+        
+        <div class="absolute bottom-0 left-0 w-full p-12 z-20 split-content-left opacity-0 transform translate-y-8">
+            <span class="text-[#f15a24] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Creative Series</span>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight mb-6">
+                VIBRANT <br/> SPRAY PAINTS.
+            </h2>
+            <p class="text-zinc-600 text-sm max-w-xs font-medium leading-relaxed mb-8">
+                Unleash your creativity with our high-pigment, fast-drying aerosol paints for any surface.
+            </p>
+            <button class="px-8 py-3 rounded-full border border-zinc-200 text-[10px] font-bold uppercase tracking-widest hover:bg-[#f15a24] hover:border-[#f15a24] hover:text-white transition-all">
+                Shop Paints →
+            </button>
+        </div>
+    </div>
+
+    <!-- Right Side: Glitter / Effects -->
+    <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group">
+        <div class="hero-split-img absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
+            <img src="/images/arts/hero-glitter.png" class="w-full h-full object-cover" alt="Glitter & Effects">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10"></div>
+        
+        <div class="absolute bottom-0 left-0 w-full p-12 z-20 split-content-right opacity-0 transform translate-y-8">
+            <span class="text-[#f15a24] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Special Effects</span>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight mb-6 text-white">
+                SPARKLING <br/> GLITTER SPRAYS.
+            </h2>
+            <p class="text-zinc-400 text-sm max-w-xs font-medium leading-relaxed mb-8">
+                Add a touch of magic with our dazzling glitter and special effect aerosol coatings.
+            </p>
+            <button class="px-8 py-3 rounded-full border border-white/20 text-[10px] font-bold uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all">
+                Shop Effects →
+            </button>
+        </div>
+    </div>
+
+    <!-- Top Centered Title -->
+    <div class="absolute top-28 md:top-36 left-1/2 -translate-x-[50%] z-40 w-full text-center px-6 arts-main-title opacity-0 transform -translate-y-4">
+        <h1 class="text-3xl md:text-7xl font-black tracking-tighter drop-shadow-sm" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <span class="text-black">Arts &</span> <span class="text-[#f15a24]">Crafts</span> <span class="text-white">Aerosols</span>
+        </h1>
+    </div>
+
+    <!-- Logo Overlay -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 hidden lg:block">
+        <div class="w-24 h-24 rounded-full border border-white/10 backdrop-blur-xl bg-white/5 flex items-center justify-center p-6">
+            <div class="text-white font-black text-xl tracking-tighter text-center">A / C</div>
+        </div>
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined') return;
+
+        const tl = gsap.timeline();
+
+        tl.to(".arts-main-title", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "power4.out"
+        })
+        .to(".split-content-left", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power4.out"
+        }, "-=1.2")
+        .to(".split-content-right", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power4.out"
+        }, "-=1");
+
+        // Move backwards and settle animation
+        gsap.set(".hero-split-img", { scale: 1.1 });
+        gsap.from(".hero-split-img", {
+            scale: 1.6,
+            duration: 2.5,
+            ease: "power4.out",
+            stagger: 0.1,
+            force3D: true
+        });
+
+        // Subtle side-to-side drift for images
+        gsap.to(".hero-split-img", {
+            x: -20,
+            duration: 20,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    });
+</script>

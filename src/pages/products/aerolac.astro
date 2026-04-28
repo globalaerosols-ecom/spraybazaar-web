@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import ProductHero from '../../components/ProductHero.astro';
+import TechFeature from '../../components/TechFeature.astro';
+import ProductReviewSection from '../../components/ProductReviewSection.astro';
+import Footer from '../../components/Footer.astro';
+
+const aerolacData = {
+    name: "Aerolac Pro Color",
+    category: "CREATIVE • AUTOMOTIVE",
+    price: "32.00",
+    description: "The ultimate premium spray paint for artists and automotive enthusiasts. Aerolac Pro Color offers unmatched pigment density, a perfect fan-spray pattern, and a natural, realistic finish that lasts for years.",
+    gallery: [
+        "/images/products/aerolac/red-wide.png",
+        "/images/products/aerolac/blue-wide.png",
+        "/images/products/aerolac/yellow-premium.png",
+        "/images/products/aerolac/lifestyle-premium-4.png",
+        "/images/products/aerolac/lifestyle-premium-5.png"
+    ]
+};
+---
+
+<Layout title="Aerolac Pro Color - Professional Spray Paint | Spray Bazaar">
+	<Header />
+	<main>
+		<ProductHero {...aerolacData} />
+		<TechFeature />
+		<ProductReviewSection />
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		overflow-x: hidden;
+	}
+</style>

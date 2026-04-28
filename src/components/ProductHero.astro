@@ -1,79 +1,119 @@
 ---
----
-<section class="relative min-h-screen">
-  <!-- Hero Background Layer -->
-  <div class="hero-bg"></div>
+interface Props {
+    name?: string;
+    category?: string;
+    price?: string;
+    description?: string;
+    gallery?: string[];
+}
 
-  <div class="pt-32 pb-20 px-6 lg:px-16 max-w-[95%] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10">
+const { 
+    name = "Spray Bazaar Pro Matte",
+    category = "PROFESSIONAL • FINISH",
+    price = "45.00",
+    description = "A sleeker version of our bestselling Pro series, updated for maximum pressure control and instant drying. A lightweight aluminum vessel and flexible nozzle make this the most professional finish yet.",
+    gallery = [
+        "/images/products/aerosol-1.png",
+        "/images/products/aerosol-2.png",
+        "/images/products/aerosol-3.png",
+        "/images/products/aerosol-4.png",
+        "/images/products/aerosol-5.png"
+    ]
+} = Astro.props;
+---
+<section class="relative min-h-screen bg-black overflow-hidden">
+  <!-- Cinematic Background Layer -->
+  <div id="hero-image-container" class="absolute inset-0 z-0">
+    <img 
+        id="hero-main-image"
+        src={gallery[0]} 
+        class="w-full h-full object-cover scale-100"
+        alt="Main Product View"
+    />
+  </div>
+
+  <div class="pt-32 pb-20 px-6 lg:px-16 max-w-[1600px] mx-auto h-full flex flex-col lg:flex-row items-center justify-between relative z-10">
     
-    <!-- Right: Detail Card Area (Far Right) -->
-    <div class="lg:col-start-10 lg:col-span-3 flex flex-col gap-6 reveal-card justify-self-end">
+    <!-- Left: Vertical Image Selector -->
+    <div class="flex lg:flex-col gap-4 overflow-x-auto lg:overflow-y-auto no-scrollbar py-4 px-3 backdrop-blur-xl bg-black/5 rounded-3xl border border-black/10 selector-bar">
+        {gallery.map((img, index) => (
+            <button 
+                class={`hero-thumb w-16 h-16 rounded-xl overflow-hidden border-2 transition-all duration-500 flex-none ${index === 0 ? 'border-[#2b65ff] scale-110 shadow-lg shadow-[#2b65ff]/30' : 'border-black/10 grayscale hover:grayscale-0 hover:border-black/30'}`}
+                data-img={img}
+            >
+                <img src={img} class="w-full h-full object-cover" alt={`Angle ${index + 1}`} />
+            </button>
+        ))}
+    </div>
+
+    <!-- Right: Detail Card Area -->
+    <div class="w-full lg:w-[420px] flex flex-col gap-6 reveal-card">
         
         <!-- Main Info Card -->
-        <div class="glass-panel p-6 flex flex-col gap-4">
+        <div class="glass-panel p-8 flex flex-col gap-6">
             <div>
-                <span class="bg-green-400 text-black text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest mb-2 inline-block">New</span>
-                <h1 class="text-4xl font-extrabold tracking-tighter mb-1 leading-none text-white">Spray Bazaar Pro Matte</h1>
-                <div class="flex items-center justify-between">
-                    <span class="text-2xl font-medium opacity-90 text-white">$45.00</span>
-                    <div class="flex items-center text-blue-400 gap-1 text-sm">
+                <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-2 block">{category}</span>
+                <span class="bg-[#2b65ff] text-white text-[9px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest mb-4 inline-block shadow-lg shadow-[#2b65ff]/20">New Generation</span>
+                <h1 class="text-5xl font-black tracking-tighter mb-2 leading-[0.9] text-zinc-900 uppercase">
+                    {name.split(' ').slice(0, 2).join(' ')} <br/>
+                    <span class="text-[#2b65ff]">{name.split(' ').slice(2).join(' ')}</span>
+                </h1>
+                <div class="flex items-center justify-between mt-4">
+                    <span class="text-3xl font-black tracking-tighter text-zinc-900">${price}</span>
+                    <div class="flex items-center text-[#2b65ff] gap-1 text-[10px] font-black uppercase tracking-widest">
                         <span>★★★★★</span>
-                        <span class="text-white/60 font-medium">(128)</span>
+                        <span class="text-zinc-400 ml-2">(128)</span>
                     </div>
                 </div>
             </div>
 
-            <div class="flex flex-col gap-2">
-                <div class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/50">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <div class="flex flex-col gap-4">
+                <div class="flex items-center gap-3 text-[9px] font-black uppercase tracking-[0.2em] text-zinc-400">
+                    <div class="w-2 h-2 rounded-full bg-[#2b65ff] animate-pulse"></div>
                     Always Precision Flow
                 </div>
-                <p class="text-sm leading-relaxed text-white/70">
-                    A sleeker version of our bestselling Pro series, updated for maximum pressure control and instant drying. 
-                    A lightweight aluminum vessel and flexible nozzle make this the most professional finish yet.
+                <p class="text-zinc-600 text-sm leading-relaxed font-medium">
+                    {description}
                 </p>
             </div>
         </div>
 
         <!-- Options Card -->
-        <div class="glass-panel p-4 flex flex-col gap-4">
-            <!-- Toggles -->
-            <div class="flex bg-white/10 p-1 rounded-full border border-white/10">
-                <button class="flex-1 py-2 text-xs font-bold bg-white text-black rounded-full">Standard</button>
-                <button class="flex-1 py-2 text-xs font-bold text-white/60">Eco-Blend</button>
-            </div>
-
+        <div class="glass-panel p-6 flex flex-col gap-6">
             <!-- Colors -->
             <div>
-                <p class="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">Color: Midnight Iridescent</p>
-                <div class="flex gap-2">
+                <p class="text-[9px] font-black uppercase tracking-widest text-zinc-400 mb-4">Edition: Midnight Iridescent</p>
+                <div class="flex gap-3">
                     <div class="swatch bg-zinc-900 active"></div>
-                    <div class="swatch bg-white"></div>
-                    <div class="swatch bg-blue-600"></div>
-                    <div class="swatch bg-rose-500"></div>
-                    <div class="swatch bg-zinc-400"></div>
+                    <div class="swatch bg-white shadow-inner border border-zinc-100"></div>
+                    <div class="swatch bg-[#2b65ff]"></div>
+                    <div class="swatch bg-zinc-600"></div>
                 </div>
             </div>
 
             <!-- Sizes -->
             <div>
-                <div class="flex justify-between items-center mb-2">
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-white/50">Volume: 400ml</p>
-                    <a href="#" class="text-[10px] font-bold underline text-white/50">Tech Sheet</a>
+                <div class="flex justify-between items-center mb-4">
+                    <p class="text-[9px] font-black uppercase tracking-widest text-zinc-400">Volume: 400ml</p>
+                    <a href="#" class="text-[9px] font-black underline text-zinc-400 hover:text-zinc-900 transition-colors">Tech Sheet</a>
                 </div>
-                <div class="grid grid-cols-5 gap-2">
+                <div class="grid grid-cols-4 gap-2">
                     <div class="size-btn">200</div>
                     <div class="size-btn active">400</div>
                     <div class="size-btn">600</div>
                     <div class="size-btn">1L</div>
-                    <div class="size-btn">5L</div>
                 </div>
             </div>
 
             <!-- Final CTA -->
-            <button class="w-full bg-[#2b65ff] hover:bg-[#1a54ee] py-4 rounded-full font-bold text-sm tracking-widest uppercase transition-all transform active:scale-95 shadow-lg shadow-[#2b65ff]/30 text-white">
-                Add to Cart
-            </button>
+            <div class="flex flex-col gap-3">
+                <button class="w-full bg-zinc-900 hover:bg-[#2b65ff] py-5 rounded-2xl font-black text-[10px] tracking-[0.3em] uppercase transition-all transform active:scale-95 shadow-xl shadow-black/10 text-white">
+                    Add to Cart
+                </button>
+                <button class="w-full bg-black/5 border border-black/10 hover:bg-black/10 py-5 rounded-2xl font-black text-[10px] tracking-[0.3em] uppercase transition-all text-zinc-500">
+                    Buy Now
+                </button>
+            </div>
         </div>
 
     </div>
@@ -82,13 +122,45 @@
 
 <script is:inline>
   window.addEventListener('load', () => {
+    if (typeof gsap === 'undefined') return;
+
+    const mainImg = document.getElementById('hero-main-image');
+    const thumbBtns = document.querySelectorAll('.hero-thumb');
+
+    // Image Selector Logic
+    thumbBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update UI
+            thumbBtns.forEach(b => {
+                b.classList.remove('border-[#2b65ff]', 'scale-110', 'shadow-lg', 'shadow-[#2b65ff]/30');
+                b.classList.add('border-black/10', 'grayscale');
+            });
+            btn.classList.add('border-[#2b65ff]', 'scale-110', 'shadow-lg', 'shadow-[#2b65ff]/30');
+            btn.classList.remove('border-black/10', 'grayscale');
+
+            const newSrc = btn.getAttribute('data-img');
+
+            // Cinematic Cross-Fade (Zoomed out transition)
+            gsap.to(mainImg, {
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    mainImg.src = newSrc;
+                    gsap.fromTo(mainImg, 
+                        { opacity: 0, scale: 1.05 }, 
+                        { opacity: 1, scale: 1.0, duration: 1.2, ease: "power2.out" }
+                    );
+                }
+            });
+        });
+    });
+
     // Entrance Animations
-    if (typeof gsap !== 'undefined') {
-      const tl = gsap.timeline();
-
-      tl.from(".reveal-card", { x: 100, opacity: 0, duration: 1, ease: "power3.out" });
-    }
-
+    const tl = gsap.timeline();
+    tl.from(".selector-bar", { x: -50, opacity: 0, duration: 1.2, ease: "power4.out" })
+      .from(".reveal-card", { x: 50, opacity: 0, duration: 1.2, ease: "power4.out" }, "-=0.8");
+    
     // Swatch Interaction
     document.querySelectorAll('.swatch').forEach(sw => {
         sw.addEventListener('click', () => {
@@ -108,54 +180,44 @@
 </script>
 
 <style>
-  .hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    background-image: url('https://assets.zyrosite.com/A3QlOV94WLSaL6xE/hair-spray-dJoPbZZGvNueGP27.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: brightness(0.7);
-  }
-
   .glass-panel {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(25px) saturate(150%);
-    -webkit-backdrop-filter: blur(25px) saturate(150%);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 32px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(40px) saturate(150%);
+    -webkit-backdrop-filter: blur(40px) saturate(150%);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 48px;
+    box-shadow: 0 24px 64px -16px rgba(0, 0, 0, 0.1);
   }
 
   .swatch {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: border-color 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
   }
 
   .swatch.active {
     border-color: #2b65ff;
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(43, 101, 255, 0.4);
   }
 
   .size-btn {
-    width: 48px;
     height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    font-size: 12px;
-    font-weight: 600;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 11px;
+    font-weight: 900;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
     color: white;
+    background: rgba(255, 255, 255, 0.02);
   }
 
   .size-btn:hover {
@@ -164,16 +226,13 @@
   }
 
   .size-btn.active {
-    background: #2b65ff;
-    border-color: #2b65ff;
-    color: white;
+    background: white;
+    border-color: white;
+    color: black;
+    transform: translateY(-2px);
   }
 
   .no-scrollbar::-webkit-scrollbar {
     display: none;
-  }
-
-  .drop-shadow-3xl {
-    filter: drop-shadow(0 35px 35px rgba(0, 0, 0, 0.5));
   }
 </style>

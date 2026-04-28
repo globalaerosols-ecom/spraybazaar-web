@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import AutoHero from '../../components/AutoHero.astro';
+import AutoHorizontalList from '../../components/AutoHorizontalList.astro';
+import AutoProductGrid from '../../components/AutoProductGrid.astro';
+import AutoLifestyle from '../../components/AutoLifestyle.astro';
+import BrandMarquee from '../../components/BrandMarquee.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Automotive Elite | Professional Vehicle Care Aerosols">
+	<Header />
+	<main>
+		<AutoHero />
+		<AutoHorizontalList />
+        <BrandMarquee />
+        <AutoLifestyle />
+        <AutoProductGrid />
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		overflow-x: hidden;
+		background: #000;
+	}
+</style>

@@ -1,0 +1,351 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import IndustrialHorizontalList from '../components/IndustrialHorizontalList.astro';
+
+// Sample Product Data
+const product = {
+    name: "Aura Pro Silicone Release",
+    category: "INDUSTRIAL • MOLDING",
+    price: "18.00",
+    description: "A high-performance, heat-stable silicone release agent designed for heavy-duty industrial molding. Provides a clean, non-stick surface with zero residue buildup.",
+    img: "/aerosol_can_front_minimalist_1777380721178.png",
+    gallery: [
+        "/aerosol_can_front_minimalist_1777380721178.png",
+        "/aerosol_can_perspective_low_angle_1777380737474.png",
+        "/aerosol_can_action_spray_1777380755922.png",
+        "/aerosol_can_top_down_textured_1777380769644.png",
+        "/aerosol_can_close_up_nozzle_mist_1777380788355.png"
+    ],
+    features: ["Heat Stable", "Non-Staining", "Friction Reducing", "Fast Drying"],
+    specs: [
+        { label: "Base Material", value: "Polydimethylsiloxane" },
+        { label: "Flash Point", value: "< -10°C" },
+        { label: "Drying Time", value: "30 Seconds" },
+        { label: "Operating Temp", value: "-40°C to 250°C" }
+    ]
+};
+---
+
+<Layout title="Product Trial | Spray Bazaar Premium">
+    <Header />
+    
+    <main class="bg-black">
+        <!-- 1. CINEMA HERO SECTION (FULL SCREEN) -->
+        <section class="relative w-full h-screen overflow-hidden">
+            <!-- Background Image (Selected) -->
+            <div id="main-image-container" class="absolute inset-0 w-full h-full">
+                <img 
+                    id="main-product-image"
+                    src={product.img} 
+                    alt={product.name} 
+                    class="w-full h-full object-cover transition-all duration-1000 scale-105"
+                />
+                <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/40 z-10"></div>
+            </div>
+
+            <!-- UI Overlay -->
+            <div class="relative z-20 w-full h-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-24 pt-32 pb-12">
+                
+                <!-- Left: Thumbnail Selector (Vertical Floating) -->
+                <div class="flex md:flex-col gap-4 overflow-x-auto md:overflow-y-auto no-scrollbar py-4 px-2 backdrop-blur-sm bg-white/5 rounded-3xl border border-white/10">
+                    {product.gallery.map((image, index) => (
+                        <button 
+                            class={`thumb-btn flex-none w-16 h-16 rounded-xl overflow-hidden border-2 transition-all duration-300 ${index === 0 ? 'border-[#2b65ff] scale-110 shadow-lg shadow-[#2b65ff]/20' : 'border-white/10 grayscale hover:grayscale-0 hover:border-white/30'}`}
+                            data-img={image}
+                        >
+                            <img src={image} class="w-full h-full object-cover" alt={`View ${index + 1}`} />
+                        </button>
+                    ))}
+                </div>
+
+                <!-- Right: Product Info Panel (Glassmorphism) -->
+                <div class="w-full lg:w-[450px] backdrop-blur-xl bg-white/5 border border-white/10 p-10 lg:p-12 rounded-[3rem] text-white shadow-2xl">
+                    <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-6 block">{product.category}</span>
+                    <h1 class="text-4xl lg:text-6xl font-black tracking-tighter leading-[0.9] mb-8 uppercase">
+                        {product.name.split(' ').slice(0, 2).join(' ')} <br/>
+                        <span class="text-[#2b65ff]">{product.name.split(' ').slice(2).join(' ')}</span>
+                    </h1>
+                    
+                    <div class="flex items-center gap-4 mb-8">
+                        <span class="text-4xl font-black tracking-tighter">${product.price}</span>
+                        <span class="text-[9px] font-bold text-white/40 uppercase tracking-widest border border-white/10 px-3 py-1 rounded-full">In Stock • Bulk Available</span>
+                    </div>
+
+                    <p class="text-white/60 text-base leading-relaxed mb-10 font-medium">
+                        {product.description}
+                    </p>
+
+                    <div class="flex flex-col gap-4 w-full">
+                        <button class="w-full bg-[#2b65ff] text-white py-6 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all transform hover:-translate-y-1 shadow-lg shadow-[#2b65ff]/20">Add to Cart</button>
+                        <button class="w-full bg-white text-black py-6 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] hover:bg-zinc-200 transition-all transform hover:-translate-y-1">Instant Checkout</button>
+                    </div>
+
+                    <!-- Micro Features -->
+                    <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-green-400"></div>
+                            <span class="text-[8px] font-black uppercase tracking-widest opacity-60">Ready to Ship</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-1.5 h-1.5 rounded-full bg-[#2b65ff]"></div>
+                            <span class="text-[8px] font-black uppercase tracking-widest opacity-60">Pure Precision</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Indicator -->
+            <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-4 opacity-40">
+                <span class="text-[8px] font-black uppercase tracking-[1em] text-white">Scroll to Explore</span>
+                <div class="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
+            </div>
+        </section>
+
+        <!-- 2. TECHNICAL RIBBON -->
+        <section class="bg-zinc-900 py-12 px-6 lg:px-24">
+            <div class="max-w-[1600px] mx-auto flex flex-wrap justify-between items-center gap-8">
+                <div class="flex gap-12">
+                    {product.features.map(feature => (
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-[#2b65ff]/20 flex items-center justify-center">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2b65ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <span class="text-white text-[10px] font-black uppercase tracking-widest">{feature}</span>
+                        </div>
+                    ))}
+                </div>
+                <div class="flex gap-4">
+                    <a href="#" class="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">Download SDS</a>
+                    <a href="#" class="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">Download TDS</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. DEEP DIVE -->
+        <section class="py-32 px-6 lg:px-24 bg-white">
+            <div class="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24">
+                <div>
+                    <h2 class="text-4xl font-black tracking-tighter mb-12 uppercase">Advanced <span class="text-[#2b65ff]">Formulation.</span></h2>
+                    <div class="space-y-8 text-zinc-500 text-lg leading-relaxed font-medium">
+                        <p>Our Aura Pro Silicone Release Spray is engineered using a high-viscosity polydimethylsiloxane base, ensuring maximum lubricity even at extreme temperatures. Unlike standard consumer-grade sprays, this formula is triple-filtered to prevent nozzle clogging and ensure a perfectly even atomization.</p>
+                        <p>Ideal for injection molding, compression molding, and vacuum forming, it creates a microscopic protective barrier that facilitates easy part removal without causing surface defects or crazing on sensitive plastics.</p>
+                    </div>
+                </div>
+                <div class="bg-zinc-50 rounded-[2rem] p-12">
+                    <h3 class="text-xl font-black tracking-widest uppercase mb-12 opacity-40">Specifications</h3>
+                    <div class="space-y-6">
+                        {product.specs.map(spec => (
+                            <div class="flex justify-between items-center py-4 border-b border-zinc-200">
+                                <span class="text-[10px] font-black uppercase tracking-widest text-zinc-400">{spec.label}</span>
+                                <span class="text-sm font-bold text-zinc-900 uppercase">{spec.value}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: PARALLAX REVEAL SECTION -->
+        <section class="parallax-reveal-section w-full h-screen bg-white overflow-hidden relative flex items-center justify-center">
+            <div class="reveal-container w-full h-full overflow-hidden relative">
+                <img 
+                    src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?fm=webp&w=1600&q=80&fit=crop" 
+                    class="parallax-img w-full h-[140%] object-cover absolute -top-[20%]" 
+                    alt="Process" 
+                />
+                <div class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center p-6">
+                    <h2 class="reveal-text text-6xl md:text-9xl font-black text-white tracking-tighter uppercase leading-none">
+                        PURE <br/> <span class="text-[#2b65ff]">PRECISION.</span>
+                    </h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. APPLICATION GUIDE -->
+        <section class="application-section relative py-48 overflow-hidden bg-zinc-900 group">
+            <div class="parallax-bg absolute inset-0 opacity-30 pointer-events-none overflow-hidden h-[120%] -top-[10%]">
+                 <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?fm=webp&w=1600&q=50&fit=crop" class="w-full h-full object-cover grayscale" alt="Industrial context" />
+            </div>
+            <div class="relative z-10 px-6 lg:px-24 max-w-[1600px] mx-auto text-center">
+                <span class="text-[#2b65ff] text-[10px] font-black uppercase tracking-[0.4em] mb-6 block">Precision Application</span>
+                <h2 class="text-5xl lg:text-7xl font-black tracking-tighter leading-none text-white mb-20 uppercase italic">How to <span class="text-zinc-600">Apply.</span></h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    {[
+                        { step: "01", title: "Preparation", desc: "Ensure the mold surface is clean and free from any previous residues or lubricants." },
+                        { step: "02", title: "Atomization", desc: "Shake well and spray from a distance of 10-12 inches for optimal mist coverage." },
+                        { step: "03", title: "Curing", desc: "Wait 30 seconds for the silicone layer to bond before starting the molding cycle." }
+                    ].map(item => (
+                        <div class="flex flex-col items-center">
+                            <div class="text-6xl font-black text-[#2b65ff] mb-6 opacity-40">{item.step}</div>
+                            <h4 class="text-white text-xl font-bold mb-4 uppercase tracking-wider">{item.title}</h4>
+                            <p class="text-zinc-400 max-w-xs mx-auto text-sm leading-relaxed">{item.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. RELATED PRODUCTS -->
+        <IndustrialHorizontalList />
+
+        <!-- 7. REVIEWS & FAQ -->
+        <section class="py-32 px-6 lg:px-24 bg-[#F6F6FA]">
+             <div class="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24">
+                <div>
+                    <h2 class="text-4xl font-black tracking-tighter mb-12 uppercase">Professional <span class="text-[#2b65ff]">Reviews.</span></h2>
+                    <div class="space-y-8">
+                        {[
+                            { author: "James Miller", role: "Factory Manager", text: "The release consistency is unmatched. We've seen a 15% reduction in part scrap since switching to Aura Pro." },
+                            { author: "Sarah Chen", role: "R&D Engineer", text: "Excellent thermal stability. It doesn't carbonize even in our highest temp cycles." }
+                        ].map(review => (
+                            <div class="bg-white p-10 rounded-[2rem] shadow-sm relative overflow-hidden">
+                                <div class="absolute top-0 right-0 p-4">
+                                    <div class="flex gap-1">
+                                        {[1,2,3,4,5].map(() => <div class="w-1.5 h-1.5 rounded-full bg-[#2b65ff]"></div>)}
+                                    </div>
+                                </div>
+                                <p class="text-zinc-600 text-lg italic mb-6 font-medium">"{review.text}"</p>
+                                <div>
+                                    <h5 class="text-zinc-900 font-black uppercase text-[10px] tracking-widest">{review.author}</h5>
+                                    <p class="text-zinc-400 text-[8px] font-bold uppercase tracking-widest mt-1">{review.role}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-4xl font-black tracking-tighter mb-12 uppercase">Common <span class="text-[#2b65ff]">Questions.</span></h2>
+                    <div class="space-y-4">
+                        {[
+                            "Is this food-safe for medical molding?",
+                            "How many cycles per application?",
+                            "Can it be painted over?",
+                            "What is the shelf life of an open can?"
+                        ].map(q => (
+                            <button class="w-full bg-white p-8 rounded-2xl flex justify-between items-center group hover:bg-zinc-900 transition-all">
+                                <span class="text-zinc-900 group-hover:text-white font-bold text-sm text-left">{q}</span>
+                                <span class="text-[#2b65ff] font-black">+</span>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <Footer />
+</Layout>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        const thumbBtns = document.querySelectorAll('.thumb-btn');
+        const mainImg = document.getElementById('main-product-image');
+        
+        thumbBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update Thumbnail UI
+                thumbBtns.forEach(b => {
+                    b.classList.remove('border-[#2b65ff]', 'scale-110', 'shadow-lg', 'shadow-[#2b65ff]/20');
+                    b.classList.add('border-white/10', 'grayscale');
+                });
+                btn.classList.add('border-[#2b65ff]', 'scale-110', 'shadow-lg', 'shadow-[#2b65ff]/20');
+                btn.classList.remove('border-white/10', 'grayscale');
+
+                const newSrc = btn.getAttribute('data-img');
+                
+                // Cinematic Cross-Fade
+                gsap.to(mainImg, {
+                    opacity: 0,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        mainImg.src = newSrc;
+                        gsap.fromTo(mainImg, 
+                            { opacity: 0, scale: 1.1 }, 
+                            { opacity: 1, scale: 1.05, duration: 0.8, ease: "power2.out" }
+                        );
+                    }
+                });
+            });
+        });
+
+        // PARALLAX IMAGE REVEAL
+        gsap.from(".reveal-container", {
+            scrollTrigger: {
+                trigger: ".parallax-reveal-section",
+                start: "top 100%",
+                end: "center center",
+                scrub: true
+            },
+            scale: 0.9,
+            borderRadius: "15rem",
+            width: "80%",
+            height: "80vh",
+            ease: "none"
+        });
+
+        gsap.to(".parallax-img", {
+            scrollTrigger: {
+                trigger: ".parallax-reveal-section",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            },
+            y: "20%",
+            ease: "none"
+        });
+
+        // KINETIC TEXT REVEAL
+        const splitText = new SplitType('.reveal-text', { types: 'chars' });
+        
+        gsap.from(splitText.chars, {
+            scrollTrigger: {
+                trigger: ".parallax-reveal-section",
+                start: "top 30%",
+                toggleActions: "play none none reverse"
+            },
+            opacity: 0,
+            y: 80,
+            rotateX: -90,
+            scale: 0.5,
+            stagger: {
+                amount: 0.6,
+                from: "start"
+            },
+            duration: 1.2,
+            ease: "back.out(1.7)"
+        });
+
+        // BACKGROUND PARALLAX (APPLICATION SECTION)
+        gsap.to(".parallax-bg img", {
+            scrollTrigger: {
+                trigger: ".application-section",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            },
+            y: "20%",
+            ease: "none"
+        });
+    });
+</script>
+
+<style>
+    main {
+        overflow-x: hidden;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>

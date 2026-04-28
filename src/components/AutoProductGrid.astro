@@ -1,0 +1,64 @@
+---
+const autoGridProducts = [
+    { id: 1, name: "Ceramic Shine Pro", brand: "AutoElite", price: "28.00", img: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?fm=webp&w=800&q=70&fit=crop", type: "Detailing", category: "CARE" },
+    { id: 2, name: "Wheel Arch Black", brand: "AutoElite", price: "18.00", img: "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?fm=webp&w=800&q=70&fit=crop", type: "Coating", category: "PROTECTION" },
+    { id: 3, name: "Engine Degreaser X", brand: "AutoElite", price: "22.00", img: "https://images.unsplash.com/photo-1489824904134-891ab64532f1?fm=webp&w=800&q=70&fit=crop", type: "Technical", category: "PERFORMANCE" },
+    { id: 4, name: "Interior Silk Satin", brand: "AutoElite", price: "16.00", img: "https://images.unsplash.com/photo-1549399542-7e3f8b79c34b?fm=webp&w=800&q=70&fit=crop", type: "Care", category: "INTERIOR" },
+    { id: 5, name: "Brake Caliper Red", brand: "AutoElite", price: "24.00", img: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?fm=webp&w=800&q=70&fit=crop", type: "Paint", category: "CUSTOM" },
+    { id: 6, name: "Leather Aura Mist", brand: "AutoElite", price: "20.00", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?fm=webp&w=800&q=70&fit=crop", type: "Scent", category: "LUXURY" }
+];
+---
+<section class="auto-grid-section w-full py-32 bg-white">
+    <div class="px-6 lg:px-24 mb-20 text-center">
+        <span class="text-[#e11d48] text-[10px] font-black uppercase tracking-[0.4em] mb-4 block">Engineered for Excellence</span>
+        <h2 class="text-5xl md:text-6xl font-black tracking-tighter leading-none">ELITE <span class="text-[#e11d48]">SOLUTIONS.</span></h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-12 px-6 lg:px-24">
+        {autoGridProducts.map((product) => (
+            <div class="auto-grid-item group cursor-pointer opacity-0 transform translate-y-12">
+                <div class="aspect-square w-full overflow-hidden mb-8 bg-zinc-50 rounded-2xl transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#e11d48]/10">
+                    <img 
+                        src={product.img} 
+                        alt={product.name} 
+                        class="w-full h-full object-cover p-0 transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                        loading="lazy"
+                    />
+                </div>
+                
+                <div class="text-center px-4">
+                    <span class="text-[8px] font-black tracking-[0.5em] text-[#e11d48] uppercase block mb-3 opacity-60">
+                        {product.category}
+                    </span>
+                    <h4 class="text-xl font-bold tracking-tighter mb-2 group-hover:text-[#e11d48] transition-colors duration-300">
+                        {product.name}
+                    </h4>
+                    <div class="flex flex-col items-center gap-3">
+                        <span class="text-sm font-black tracking-widest text-zinc-400">${product.price}</span>
+                        <button class="bg-black text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#e11d48] transition-all transform group-hover:translate-y-0 opacity-0 group-hover:opacity-100 translate-y-4">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        gsap.to(".auto-grid-item", {
+            scrollTrigger: {
+                trigger: ".auto-grid-section",
+                start: "top 75%",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.1,
+            ease: "power4.out"
+        });
+    });
+</script>

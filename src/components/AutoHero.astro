@@ -1,0 +1,105 @@
+---
+---
+<section class="relative w-full h-screen overflow-hidden bg-black flex flex-col md:flex-row">
+    <!-- Left Side: Detail / Care -->
+    <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group border-r border-white/5">
+        <div class="hero-split-img absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
+            <img src="/images/auto/hero-care.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-1000" alt="Automotive Detailing">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10"></div>
+        
+        <div class="absolute bottom-0 left-0 w-full p-12 z-20 split-content-left opacity-0 transform translate-y-8">
+            <span class="text-[#e11d48] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Elite Care Series</span>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight mb-6 text-white">
+                PRECISION <br/> DETAILING.
+            </h2>
+            <p class="text-zinc-400 text-sm max-w-xs font-medium leading-relaxed mb-8">
+                Professional-grade aerosol formulas for a showroom finish on every surface.
+            </p>
+            <button class="px-8 py-3 rounded-full border border-white/10 text-[10px] font-bold uppercase tracking-widest text-white hover:bg-[#e11d48] hover:border-[#e11d48] transition-all">
+                Explore Care →
+            </button>
+        </div>
+    </div>
+
+    <!-- Right Side: Tech / Performance -->
+    <div class="relative w-full md:w-1/2 h-1/2 md:h-full overflow-hidden group">
+        <div class="hero-split-img absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
+            <img src="/images/auto/hero-tech.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-1000" alt="Mechanical Performance">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10"></div>
+        
+        <div class="absolute bottom-0 left-0 w-full p-12 z-20 split-content-right opacity-0 transform translate-y-8">
+            <span class="text-[#e11d48] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Performance Tech</span>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter leading-tight mb-6 text-white">
+                HIGH OUTPUT <br/> FORMULAS.
+            </h2>
+            <p class="text-zinc-400 text-sm max-w-xs font-medium leading-relaxed mb-8">
+                Heavy-duty technical sprays designed for extreme engine environments.
+            </p>
+            <button class="px-8 py-3 rounded-full border border-white/10 text-[10px] font-bold uppercase tracking-widest text-white hover:bg-white hover:text-black transition-all">
+                View Technical →
+            </button>
+        </div>
+    </div>
+
+    <!-- Top Centered Title -->
+    <div class="absolute top-28 md:top-36 left-1/2 -translate-x-[50%] z-40 w-full text-center px-6 auto-main-title opacity-0 transform -translate-y-4">
+        <h1 class="text-3xl md:text-7xl font-black tracking-tighter drop-shadow-2xl" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+            <span class="text-white mix-blend-difference">Automotive</span> <span class="text-[#e11d48]">Elite</span>
+        </h1>
+    </div>
+
+    <!-- Logo Overlay -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 hidden lg:block">
+        <div class="w-24 h-24 rounded-full border border-white/10 backdrop-blur-xl bg-white/5 flex items-center justify-center p-6">
+            <div class="text-white font-black text-xl tracking-tighter text-center">A / E</div>
+        </div>
+    </div>
+</section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof gsap === 'undefined') return;
+
+        const tl = gsap.timeline();
+
+        tl.to(".auto-main-title", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "power4.out"
+        })
+        .to(".split-content-left", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power4.out"
+        }, "-=1.2")
+        .to(".split-content-right", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power4.out"
+        }, "-=1");
+
+        // Move backwards and settle animation
+        gsap.set(".hero-split-img", { scale: 1.1 });
+        gsap.from(".hero-split-img", {
+            scale: 1.6,
+            duration: 2.5,
+            ease: "power4.out",
+            stagger: 0.1,
+            force3D: true
+        });
+
+        // Subtle side-to-side drift for images
+        gsap.to(".hero-split-img", {
+            x: -20,
+            duration: 20,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    });
+</script>
