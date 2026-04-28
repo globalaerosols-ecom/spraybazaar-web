@@ -27,7 +27,13 @@ const { title } = Astro.props;
 	<body>
 		<slot />
 		<script is:inline>
-			if (typeof Lenis !== 'undefined') {
+			// Global mobile check
+			const isMobile = window.innerWidth < 768;
+			if (isMobile) {
+				document.documentElement.classList.add('is-mobile');
+			}
+
+			if (typeof Lenis !== 'undefined' && !isMobile) {
 				const lenis = new Lenis({
 					duration: 1.2,
 					smooth: true,
@@ -39,7 +45,15 @@ const { title } = Astro.props;
 				}
 				requestAnimationFrame(raf);
 			}
+
+			// Global kill GSAP ScrollTrigger on mobile
+			window.addEventListener('load', () => {
+				if (isMobile && typeof ScrollTrigger !== 'undefined') {
+					ScrollTrigger.getAll().forEach(st => st.kill());
+				}
+			});
 		</script>
+
 	</body>
 </html>
 <style is:global>

@@ -76,3 +76,81 @@ h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.02em; }
 h2 { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; }
 h3 { font-size: 1.25rem; font-weight: 600; }
 p { color: var(--text-muted); size: 1rem; }
+
+/* MOBILE PERFORMANCE OVERRIDES */
+@media (max-width: 767px) {
+  /* Kill all animations and transitions */
+  *, *::before, *::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Force visibility for elements typically hidden by reveal animations */
+  .opacity-0, 
+  .invisible, 
+  [style*="opacity: 0"], 
+  [style*="opacity:0"],
+  [class*="split-content"],
+  [class*="main-title"],
+  .hero-brand-label,
+  .project-card,
+  .category-card,
+  .luxury-product-card,
+  .cosmetic-product-card,
+  .industrial-product-card,
+  .auto-product-card,
+  .arts-product-card,
+  .char,
+  .word {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+
+  /* Specific fix for images scaled or offset by GSAP parallax */
+  .hero-main-img,
+  .triple-img,
+  .hero-split-img,
+  .parallax-img,
+  .image-wrapper img {
+    transform: none !important;
+    scale: 1 !important;
+    top: 0 !important;
+  }
+
+  /* Fix for Reveal Containers (distorted by disabled GSAP from() state) */
+  .triple-reveal-container,
+  .reveal-container {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    scale: 1 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    margin: 0 !important;
+  }
+
+  /* Ensure the sections containing them also behave */
+  .triple-reveal-section,
+  .parallax-reveal-section {
+    height: auto !important;
+    min-height: 50vh;
+  }
+
+  /* Fix for stacked grid items with absolute children */
+  .triple-reveal-section .grid > div {
+    min-height: 60vh !important;
+    position: relative !important;
+  }
+
+  /* Ensure body is scrollable and clean */
+  body {
+    overflow-x: hidden !important;
+    overscroll-behavior-y: none;
+  }
+}
