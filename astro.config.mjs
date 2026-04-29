@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
+import cloudflare from '@astrojs/cloudflare';
+
 // https://astro.build/config
 export default defineConfig({
   image: {
@@ -8,6 +10,7 @@ export default defineConfig({
       entrypoint: 'astro/assets/services/sharp'
     }
   },
+
   vite: {
     build: {
       cssMinify: true
@@ -15,5 +18,7 @@ export default defineConfig({
     css: {
       devSourcemap: false
     }
-  }
+  },
+
+  adapter: cloudflare()
 });
