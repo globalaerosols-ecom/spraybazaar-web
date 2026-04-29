@@ -89,10 +89,11 @@ p { color: var(--text-muted); size: 1rem; }
   }
 
   /* Force visibility for elements typically hidden by reveal animations */
-  .opacity-0, 
-  .invisible, 
-  [style*="opacity: 0"], 
-  [style*="opacity:0"],
+  /* We exclude .ui-toggle elements to allow functional menus to work */
+  .opacity-0:not(.ui-toggle), 
+  .invisible:not(.ui-toggle), 
+  [style*="opacity: 0"]:not(.ui-toggle), 
+  [style*="opacity:0"]:not(.ui-toggle),
   [class*="split-content"],
   [class*="main-title"],
   .hero-brand-label,
@@ -121,6 +122,40 @@ p { color: var(--text-muted); size: 1rem; }
     transform: none !important;
     scale: 1 !important;
     top: 0 !important;
+  }
+
+  /* Fix for Horizontal Scrollers on Mobile */
+  .scroller-container,
+  .horizontal-scroll-container,
+  [class*="scroller-container"],
+  [class*="scroll-container"],
+  [class*="horizontal-scroll"] {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    touch-action: pan-x !important;
+    gap: 1.5rem !important;
+    padding-bottom: 2rem !important;
+    margin-bottom: -1rem !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+
+  .scroller-item,
+  .industrial-product-card,
+  .luxury-product-card,
+  .cosmetic-product-card,
+  .auto-product-card,
+  .arts-product-card,
+  [class*="-product-card"] {
+    flex: 0 0 auto !important; /* Prevent shrinking to ensure horizontal layout */
+    width: 280px !important;   /* Standard mobile width for better snapping */
+    scroll-snap-align: start !important;
+    pointer-events: auto !important;
   }
 
   /* Fix for Reveal Containers (distorted by disabled GSAP from() state) */

@@ -28,7 +28,10 @@ const { title } = Astro.props;
 		<slot />
 		<script is:inline>
 			// Global mobile check
-			const isMobile = window.innerWidth < 768;
+			function checkMobile() {
+				return window.innerWidth < 768 || window.matchMedia('(max-width: 767px)').matches;
+			}
+			const isMobile = checkMobile();
 			if (isMobile) {
 				document.documentElement.classList.add('is-mobile');
 			}
@@ -46,10 +49,16 @@ const { title } = Astro.props;
 				requestAnimationFrame(raf);
 			}
 
-			// Global kill GSAP ScrollTrigger on mobile
+			// Global kill GSAP ScrollTrigger & Draggable on mobile
 			window.addEventListener('load', () => {
-				if (isMobile && typeof ScrollTrigger !== 'undefined') {
-					ScrollTrigger.getAll().forEach(st => st.kill());
+				if (isMobile) {
+					if (typeof ScrollTrigger !== 'undefined') {
+						ScrollTrigger.getAll().forEach(st => st.kill());
+						ScrollTrigger.refresh();
+					}
+					if (typeof Draggable !== 'undefined') {
+						Draggable.getAll().forEach(d => d.kill());
+					}
 				}
 			});
 		</script>
